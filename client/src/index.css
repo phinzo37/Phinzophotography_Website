@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white dark:bg-black text-gray-900 dark:text-white;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-1;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-200 dark:bg-gray-800 rounded-full;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-[1400px] mx-auto px-8;
+  }
+}
+
+:root {
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.5;
+  font-weight: 300;
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+a {
+  @apply font-light tracking-[0.2em] text-gray-900 dark:text-white transition-colors duration-200;
+}
+
+a:hover {
+  @apply text-gray-600 dark:text-gray-400;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  @apply text-[2.5rem] md:text-[4rem] lg:text-[5rem] font-extralight tracking-[0.2em] leading-tight;
+}
+
+h2 {
+  @apply text-4xl font-extralight tracking-[0.2em] leading-relaxed uppercase;
+}
+
+h3 {
+  @apply text-2xl font-extralight tracking-[0.2em] leading-relaxed uppercase;
+}
+
+p {
+  @apply font-light leading-relaxed text-gray-500 dark:text-gray-400;
+}
+
+button {
+  @apply text-sm tracking-[0.2em] uppercase text-gray-600 dark:text-gray-400 
+         hover:text-gray-900 dark:hover:text-white transition-colors duration-200
+         focus:outline-none focus:ring-0;
+}
+
+input, textarea {
+  @apply w-full px-6 py-4 bg-gray-100 dark:bg-gray-900 border-0
+         text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400
+         focus:ring-0 focus:bg-gray-200 dark:focus:bg-gray-800 transition-colors duration-200
+         text-sm tracking-[0.1em];
+}
+
+/* Image hover effects */
+.image-hover {
+  @apply relative overflow-hidden;
+}
+
+.image-hover img {
+  @apply transform transition-transform duration-700 ease-out;
+}
+
+.image-hover:hover img {
+  @apply scale-105;
+}
+
+/* Grid layouts */
+.photo-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16;
+}
+
+.collection-grid {
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-32;
+}
+
+/* Transitions */
+.page-transition {
+  @apply transition-all duration-500 ease-out;
+}
+
+/* Typography utilities */
+.heading-xl {
+  @apply text-[2.5rem] md:text-[4rem] lg:text-[5rem] font-extralight tracking-[0.2em] uppercase;
+}
+
+.heading-lg {
+  @apply text-4xl font-extralight tracking-[0.2em] uppercase;
+}
+
+.heading-md {
+  @apply text-2xl font-extralight tracking-[0.2em] uppercase;
+}
+
+.body-text {
+  @apply font-light leading-relaxed text-gray-500 dark:text-gray-400;
+}
+
+/* Custom classes */
+.nav-link {
+  @apply text-sm tracking-[0.2em] uppercase text-gray-600 dark:text-gray-400 
+         hover:text-gray-900 dark:hover:text-white transition-colors duration-200;
+}
+
+.nav-link-active {
+  @apply text-gray-900 dark:text-white;
+}
+
+/* Section spacing */
+.section-spacing {
+  @apply py-32;
+}
+
+.section-title {
+  @apply text-4xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white mb-24 text-center uppercase;
+}
