@@ -29,9 +29,13 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-24">
           <Link 
             to="/" 
-            className="text-2xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+            className="flex items-center"
           >
-            GURUNG
+            <img 
+              src="/images/logo.png" 
+              alt="Gurung Photography Logo" 
+              className="h-24 w-auto"
+            />
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">

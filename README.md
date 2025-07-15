@@ -1,17 +1,16 @@
 # Photography Portfolio Website
 
-A minimalist photography portfolio website built with the MERN stack (MongoDB, Express.js, React, Node.js).
+A minimalist photography portfolio website built with React and TypeScript. Currently running in development mode with mock data.
 
 ## Features
 
 - Clean, minimalist design
 - Responsive layout
 - Photo gallery with hover effects
-- Admin panel for photo management
+- Admin panel for photo management (mock functionality)
 - Contact form
 - Smooth page transitions
-- Image upload to Cloudinary
-- JWT authentication for admin access
+- Dark/light theme toggle
 
 ## Tech Stack
 
@@ -20,69 +19,39 @@ A minimalist photography portfolio website built with the MERN stack (MongoDB, E
 - TypeScript
 - TailwindCSS
 - Framer Motion
-- Axios
-
-### Backend
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
-- JWT Authentication
-- Multer
-- Cloudinary
+- React Router
 
 ## Prerequisites
 
 - Node.js (v14 or higher)
-- MongoDB
-- Cloudinary account
 
 ## Setup
 
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd photography-portfolio
+cd gurungPhotography
 ```
 
 2. Install dependencies:
 ```bash
-# Install backend dependencies
-cd server
-npm install
-
 # Install frontend dependencies
-cd ../client
+cd client
 npm install
 ```
 
-3. Create a `.env` file in the server directory with the following variables:
-```
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/photography-portfolio
-JWT_SECRET=your_jwt_secret_key_here
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
-```
-
-4. Start the development servers:
+3. Start the development server:
 ```bash
-# Start backend server
-cd server
-npm run dev
-
 # Start frontend server
-cd ../client
 npm run dev
 ```
 
-5. Open your browser and navigate to `http://localhost:5173`
+4. Open your browser and navigate to `http://localhost:5173`
 
 ## Project Structure
 
 ```
-photography-portfolio/
+gurungPhotography/
 ├── client/                 # Frontend React application
 │   ├── src/
 │   │   ├── components/    # Reusable components
@@ -90,15 +59,26 @@ photography-portfolio/
 │   │   ├── App.tsx       # Main application component
 │   │   └── main.tsx      # Application entry point
 │   └── package.json
-│
-└── server/                # Backend Express application
-    ├── src/
-    │   ├── models/       # MongoDB models
-    │   ├── routes/       # API routes
-    │   ├── middleware/   # Custom middleware
-    │   └── index.ts      # Server entry point
-    └── package.json
+└── README.md
 ```
+
+## Development Mode
+
+The application is currently running in development mode with the following features:
+
+- **Mock Data**: All photos are loaded from mock data using Unsplash images
+- **Mock Admin Panel**: The admin panel simulates upload and delete operations
+- **Mock Authentication**: Any username/password will work for admin login
+- **No Backend**: The application runs entirely on the frontend
+
+## Future Backend Integration
+
+When you're ready to add a backend, you can:
+
+1. Create a new server directory
+2. Set up your preferred backend framework (Express.js, Fastify, etc.)
+3. Implement the API endpoints that the frontend expects
+4. Replace the mock data and functions with real API calls
 
 ## Contributing
 

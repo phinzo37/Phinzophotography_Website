@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 interface Photo {
   _id: string;
@@ -10,6 +9,31 @@ interface Photo {
   url: string;
   album?: string;
 }
+
+// Mock data for development without backend
+const mockPhotos: Photo[] = [
+  {
+    _id: '1',
+    title: 'Mountain Landscape',
+    description: 'Beautiful mountain scenery',
+    url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
+    album: 'Landscapes'
+  },
+  {
+    _id: '2',
+    title: 'Portrait Session',
+    description: 'Professional portrait photography',
+    url: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&h=600&fit=crop',
+    album: 'Portraits'
+  },
+  {
+    _id: '3',
+    title: 'Street Photography',
+    description: 'Urban life captured',
+    url: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=600&fit=crop',
+    album: 'Street'
+  }
+];
 
 const Admin = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
@@ -22,6 +46,7 @@ const Admin = () => {
     album: '',
   });
   const [uploadError, setUploadError] = useState<string | null>(null);
+  const [uploadSuccess, setUploadSuccess] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,17 +61,11 @@ const Admin = () => {
         return;
       }
 
-      const response = await axios.get('http://localhost:5001/api/photos', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setPhotos(response.data);
+      // Simulate API call with mock data
+      await new Promise(resolve => setTimeout(resolve, 500));
+      setPhotos(mockPhotos);
     } catch (error) {
       console.error('Error fetching photos:', error);
-      if (axios.isAxiosError(error) && error.response?.status === 401) {
-        navigate('/admin-login');
-      }
     } finally {
       setLoading(false);
     }
@@ -80,58 +99,28 @@ const Admin = () => {
 
     setUploading(true);
     setUploadError(null);
+    setUploadSuccess(null);
     
     try {
-      // First, upload the image to Cloudinary
-      const uploadFormData = new FormData();
-      uploadFormData.append('image', selectedFile);
+      // Simulate upload delay
+      await new Promise(resolve => setTimeout(resolve, 2000));
       
-      // Create a clean folder path
-      if (formData.album) {
-        const folderPath = formData.album
-          .toLowerCase()
-          .trim()
-          .replace(/\s+/g, '-')
-          .replace(/[^a-z0-9-]/g, '');
-        uploadFormData.append('folder', `gurung-photography/${folderPath}`);
-      }
-
-      console.log('Uploading file:', selectedFile.name);
-      const uploadResponse = await axios.post(
-        'http://localhost:5001/api/upload/single',
-        uploadFormData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      console.log('Upload response:', uploadResponse.data);
-
-      if (!uploadResponse.data.file?.url) {
-        throw new Error('No URL received from upload');
-      }
-
-      // Then create the photo record with the Cloudinary URL
-      const photoData = {
+      // Create a mock photo entry
+      const newPhoto: Photo = {
+        _id: Date.now().toString(),
         title: formData.title,
-        description: formData.description,
-        album: formData.album,
-        url: uploadResponse.data.file.url,
+        description: formData.description || '',
+        url: URL.createObjectURL(selectedFile), // Use local blob URL for preview
+        album: formData.album || ''
       };
 
-      await axios.post('http://localhost:5001/api/photos', photoData, {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      // Refresh the photos list and reset form
-      await fetchPhotos();
+      // Add to photos list
+      setPhotos(prev => [newPhoto, ...prev]);
+      
+      // Reset form
       setFormData({ title: '', description: '', album: '' });
       setSelectedFile(null);
+      setUploadSuccess('Photo uploaded successfully! (Mock upload)');
       
       // Reset file input
       const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
@@ -139,14 +128,7 @@ const Admin = () => {
       
     } catch (error) {
       console.error('Error uploading photo:', error);
-      if (axios.isAxiosError(error)) {
-        setUploadError(error.response?.data?.message || 'Error uploading photo');
-      } else {
-        setUploadError('An unexpected error occurred');
-      }
-      if (axios.isAxiosError(error) && error.response?.status === 401) {
-        navigate('/admin-login');
-      }
+      setUploadError('Error uploading photo. Please try again.');
     } finally {
       setUploading(false);
     }
@@ -160,17 +142,13 @@ const Admin = () => {
     }
 
     try {
-      await axios.delete(`http://localhost:5001/api/photos/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      fetchPhotos();
+      // Simulate delete delay
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      // Remove from photos list
+      setPhotos(prev => prev.filter(photo => photo._id !== id));
     } catch (error) {
       console.error('Error deleting photo:', error);
-      if (axios.isAxiosError(error) && error.response?.status === 401) {
-        navigate('/admin-login');
-      }
     }
   };
 
@@ -205,12 +183,22 @@ const Admin = () => {
           </button>
         </div>
 
+        {/* Development Notice */}
+        <div className="mb-8 bg-blue-50 border border-blue-200 text-blue-700 p-4 rounded-lg">
+          <strong>Development Mode:</strong> This is a mock admin panel. Uploads and deletions are simulated and won't persist.
+        </div>
+
         {/* Upload Form */}
         <div className="mb-16 bg-white p-8 rounded-lg shadow-sm border border-gray-100">
           <h2 className="text-2xl font-light mb-8 text-gray-900 tracking-tight">Upload New Photo</h2>
           {uploadError && (
             <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-600 rounded">
               {uploadError}
+            </div>
+          )}
+          {uploadSuccess && (
+            <div className="mb-6 p-4 bg-green-50 border border-green-200 text-green-600 rounded">
+              {uploadSuccess}
             </div>
           )}
           <form onSubmit={handleSubmit} className="space-y-6 max-w-xl">

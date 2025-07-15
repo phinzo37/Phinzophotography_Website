@@ -10,6 +10,7 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   if (!token) {
     return <Navigate to="/admin-login" replace />;
   }
+  
 
   return <>{children}</>;
 };

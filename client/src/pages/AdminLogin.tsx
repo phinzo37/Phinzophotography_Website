@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 const AdminLogin = () => {
   const [credentials, setCredentials] = useState({
@@ -26,16 +25,16 @@ const AdminLogin = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:5001/api/auth/login', credentials);
-      const { token } = response.data;
+      // Mock login - always succeeds for development
+      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API delay
       
-      // Store the token in localStorage
-      localStorage.setItem('adminToken', token);
+      // Store a mock token
+      localStorage.setItem('adminToken', 'mock-token-for-development');
       
       // Redirect to admin panel
       navigate('/admin');
     } catch (error) {
-      setError('Invalid credentials');
+      setError('Login failed. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -57,6 +56,10 @@ const AdminLogin = () => {
             className="bg-white p-8 rounded-lg shadow-lg"
           >
             <h1 className="text-3xl font-light mb-8 text-center">Admin Login</h1>
+            
+            <div className="bg-blue-50 text-blue-600 p-3 rounded-md mb-6 text-sm">
+              <strong>Development Mode:</strong> Any username/password will work for testing.
+            </div>
             
             {error && (
               <div className="bg-red-50 text-red-500 p-3 rounded-md mb-6">
