@@ -1,18 +1,17 @@
-import { Navigate } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
 }
 
 const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
-  const token = localStorage.getItem('adminToken');
+  const token = localStorage.getItem("adminToken");
 
   if (!token) {
     return <Navigate to="/admin-login" replace />;
   }
-  
 
   return <>{children}</>;
 };
 
-export default ProtectedRoute; 
+export default ProtectedRoute;

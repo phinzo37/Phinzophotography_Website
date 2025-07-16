@@ -3,11 +3,12 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const Navbar = () => {
-  const [isDark, setIsDark] = useState(true); // Default to dark theme
+  const [isDark, setIsDark] = useState(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    const isDarkMode = localStorage.getItem('theme') !== 'light'; // Default to dark
+    const isDarkMode = localStorage.getItem('theme') !== 'light';
     setIsDark(isDarkMode);
     document.documentElement.classList.toggle('dark', isDarkMode);
   }, []);
@@ -17,6 +18,10 @@ const Navbar = () => {
     setIsDark(newTheme);
     localStorage.setItem('theme', newTheme ? 'dark' : 'light');
     document.documentElement.classList.toggle('dark', newTheme);
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
@@ -39,68 +44,37 @@ const Navbar = () => {
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">
-            <Link
-              to="/"
-              className={`text-sm tracking-[0.2em] uppercase ${
-                location.pathname === '/'
-                  ? 'text-gray-900 dark:text-white'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-              } transition-colors`}
-            >
-              Home
-            </Link>
-            <Link
-              to="/services"
-              className={`text-sm tracking-[0.2em] uppercase ${
-                location.pathname === '/services'
-                  ? 'text-gray-900 dark:text-white'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-              } transition-colors`}
-            >
-              Services
-            </Link>
-            <Link
-              to="/contact"
-              className={`text-sm tracking-[0.2em] uppercase ${
-                location.pathname === '/contact'
-                  ? 'text-gray-900 dark:text-white'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-              } transition-colors`}
-            >
-              Contact
-            </Link>
-            <Link
-              to="/portfolio"
-              className={`text-sm tracking-[0.2em] uppercase ${
-                location.pathname === '/portfolio'
-                  ? 'text-gray-900 dark:text-white'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-              } transition-colors`}
-            >
-              Portfolio
-            </Link>
-            <Link
-              to="/about"
-              className={`text-sm tracking-[0.2em] uppercase ${
-                location.pathname === '/about'
-                  ? 'text-gray-900 dark:text-white'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-              } transition-colors`}
-            >
-              About
-            </Link>
+            <Link to="/" className={`text-sm tracking-[0.2em] uppercase ${location.pathname === '/' ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'} transition-colors`}>Home</Link>
+            <Link to="/services" className={`text-sm tracking-[0.2em] uppercase ${location.pathname === '/services' ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'} transition-colors`}>Services</Link>
+            <Link to="/contact" className={`text-sm tracking-[0.2em] uppercase ${location.pathname === '/contact' ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'} transition-colors`}>Contact</Link>
+            <Link to="/portfolio" className={`text-sm tracking-[0.2em] uppercase ${location.pathname === '/portfolio' ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'} transition-colors`}>Portfolio</Link>
+            <Link to="/about" className={`text-sm tracking-[0.2em] uppercase ${location.pathname === '/about' ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'} transition-colors`}>About</Link>
           </div>
 
           <div className="flex items-center space-x-4">
-            <button
-              onClick={toggleTheme}
-              className="p-2 text-sm tracking-[0.2em] uppercase text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-              aria-label="Toggle theme"
-            >
+            <button onClick={toggleTheme} className="p-2 text-sm tracking-[0.2em] uppercase text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors" aria-label="Toggle theme">
               {isDark ? 'Light' : 'Dark'}
+            </button>
+            <button onClick={toggleMobileMenu} className="md:hidden p-2 text-gray-600 dark:text-gray-400" aria-label="Toggle menu">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+              </svg>
             </button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="md:hidden py-4 border-t border-gray-100 dark:border-gray-800">
+            <div className="flex flex-col space-y-4">
+              <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className={`text-sm tracking-[0.2em] uppercase ${location.pathname === '/' ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'} transition-colors`}>Home</Link>
+              <Link to="/services" onClick={() => setIsMobileMenuOpen(false)} className={`text-sm tracking-[0.2em] uppercase ${location.pathname === '/services' ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'} transition-colors`}>Services</Link>
+              <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className={`text-sm tracking-[0.2em] uppercase ${location.pathname === '/contact' ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'} transition-colors`}>Contact</Link>
+              <Link to="/portfolio" onClick={() => setIsMobileMenuOpen(false)} className={`text-sm tracking-[0.2em] uppercase ${location.pathname === '/portfolio' ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'} transition-colors`}>Portfolio</Link>
+              <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className={`text-sm tracking-[0.2em] uppercase ${location.pathname === '/about' ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'} transition-colors`}>About</Link>
+            </div>
+          </motion.div>
+        )}
       </div>
     </motion.nav>
   );

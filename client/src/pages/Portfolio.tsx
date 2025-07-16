@@ -109,7 +109,7 @@ const Portfolio = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen pt-24"
+      className="min-h-screen bg-white dark:bg-black pt-24"
     >
       <div className="container mx-auto px-4">
         <motion.div
@@ -118,10 +118,10 @@ const Portfolio = () => {
           transition={{ delay: 0.2 }}
           className="text-center mb-16"
         >
-          <h1 className="text-5xl font-light tracking-tight text-gray-900 mb-4">
+          <h1 className="text-5xl font-light tracking-tight text-gray-900 dark:text-white mb-4">
             Portfolio
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Explore my collection of photographs capturing moments, emotions, and the beauty of the world around us.
           </p>
         </motion.div>
@@ -140,7 +140,7 @@ const Portfolio = () => {
                 className={`px-6 py-2 rounded-full border transition-colors ${
                   selectedAlbum === null
                     ? 'bg-gray-900 text-white border-gray-900'
-                    : 'bg-white text-gray-700 border-gray-300 hover:border-gray-900'
+                    : 'bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 hover:border-gray-900'
                 }`}
               >
                 All Photos
@@ -152,7 +152,7 @@ const Portfolio = () => {
                   className={`px-6 py-2 rounded-full border transition-colors ${
                     selectedAlbum === album
                       ? 'bg-gray-900 text-white border-gray-900'
-                      : 'bg-white text-gray-700 border-gray-300 hover:border-gray-900'
+                      : 'bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 hover:border-gray-900'
                   }`}
                 >
                   {album}
