@@ -19,10 +19,22 @@ const Home = () => {
             className="max-w-5xl"
           >
             <h1 className="text-[2.5rem] md:text-[4rem] lg:text-[5rem] font-extralight tracking-[0.2em] text-gray-900 dark:text-white mb-6 leading-tight">
-              HELLO, I'M GURUNG,{' '}
-              <span className="text-gray-500 dark:text-gray-500">
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="inline-block"
+              >
+                HELLO, I'M ANIL,{' '}
+              </motion.span>
+              <motion.span 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="text-gray-500 dark:text-gray-500 inline-block"
+              >
                 PHOTOGRAPHER BASED IN DMV
-              </span>
+              </motion.span>
             </h1>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mt-16">
               <Link

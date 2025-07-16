@@ -9,50 +9,7 @@ interface Photo {
   album?: string;
 }
 
-// Mock data for development without backend
-const mockPhotos: Photo[] = [
-  {
-    _id: '1',
-    title: 'Mountain Landscape',
-    description: 'Beautiful mountain scenery',
-    url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
-    album: 'Landscapes'
-  },
-  {
-    _id: '2',
-    title: 'Portrait Session',
-    description: 'Professional portrait photography',
-    url: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&h=600&fit=crop',
-    album: 'Portraits'
-  },
-  {
-    _id: '3',
-    title: 'Street Photography',
-    description: 'Urban life captured',
-    url: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=600&fit=crop',
-    album: 'Street'
-  },
-  {
-    _id: '4',
-    title: 'Nature Close-up',
-    description: 'Macro photography of flowers',
-    url: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800&h=600&fit=crop',
-    album: 'Nature'
-  },
-  {
-    _id: '5',
-    title: 'Architecture',
-    description: 'Modern building design',
-    url: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&h=600&fit=crop',
-    album: 'Architecture'
-  },
-  {
-    _id: '6',
-    title: 'Abstract Art',
-    description: 'Creative abstract composition',
-    url: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=800&h=600&fit=crop'
-  }
-];
+const API_BASE = 'http://localhost:3001/api';
 
 const Portfolio = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
@@ -61,12 +18,11 @@ const Portfolio = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Simulate API call with mock data
     const fetchPhotos = async () => {
       try {
-        // Simulate loading delay
-        await new Promise(resolve => setTimeout(resolve, 500));
-        setPhotos(mockPhotos);
+        const response = await fetch(`${API_BASE}/photos`);
+        const data = await response.json();
+        setPhotos(data);
         setLoading(false);
       } catch (error) {
         console.error('Error loading photos:', error);
@@ -111,17 +67,17 @@ const Portfolio = () => {
       exit={{ opacity: 0 }}
       className="min-h-screen bg-white dark:bg-black pt-24"
     >
-      <div className="container mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
           className="text-center mb-16"
         >
-          <h1 className="text-5xl font-light tracking-tight text-gray-900 dark:text-white mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight text-gray-900 dark:text-white mb-4 text-center">
             Portfolio
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto text-center">
             Explore my collection of photographs capturing moments, emotions, and the beauty of the world around us.
           </p>
         </motion.div>
@@ -167,7 +123,7 @@ const Portfolio = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 lg:gap-8 justify-items-center"
         >
           {filteredPhotos.map((photo, index) => (
             <motion.div

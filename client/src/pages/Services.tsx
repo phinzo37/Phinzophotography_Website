@@ -46,10 +46,10 @@ const Services = () => {
                       className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
-                  <h3 className="text-xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase">
+                  <h3 className="text-xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase text-center">
                     Couples & Engagements
                   </h3>
-                  <p className="text-gray-500 dark:text-gray-400 font-light leading-relaxed">
+                  <p className="text-gray-500 dark:text-gray-400 font-light leading-relaxed text-center">
                     Timeless portraits capturing the genuine connection between you and your partner.
                   </p>
                 </div>
@@ -62,10 +62,10 @@ const Services = () => {
                       className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
-                  <h3 className="text-xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase">
+                  <h3 className="text-xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase text-center">
                     Weddings & Elopements
                   </h3>
-                  <p className="text-gray-500 dark:text-gray-400 font-light leading-relaxed">
+                  <p className="text-gray-500 dark:text-gray-400 font-light leading-relaxed text-center">
                     Artistic storytelling that preserves every beautiful moment of your special day.
                   </p>
                 </div>
@@ -78,10 +78,10 @@ const Services = () => {
                       className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
-                  <h3 className="text-xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase">
+                  <h3 className="text-xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase text-center">
                     Maternity & Baby Showers
                   </h3>
-                  <p className="text-gray-500 dark:text-gray-400 font-light leading-relaxed">
+                  <p className="text-gray-500 dark:text-gray-400 font-light leading-relaxed text-center">
                     Heartfelt images celebrating new beginnings and growing families.
                   </p>
                 </div>
@@ -94,10 +94,10 @@ const Services = () => {
                       className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
-                  <h3 className="text-xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase">
+                  <h3 className="text-xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase text-center">
                     Birthday Parties & Special Events
                   </h3>
-                  <p className="text-gray-500 dark:text-gray-400 font-light leading-relaxed">
+                  <p className="text-gray-500 dark:text-gray-400 font-light leading-relaxed text-center">
                     Vibrant, candid, and posed photos that turn celebrations into lasting memories.
                   </p>
                 </div>
@@ -110,10 +110,10 @@ const Services = () => {
                       className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
-                  <h3 className="text-xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase">
+                  <h3 className="text-xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase text-center">
                     Graduations
                   </h3>
-                  <p className="text-gray-500 dark:text-gray-400 font-light leading-relaxed">
+                  <p className="text-gray-500 dark:text-gray-400 font-light leading-relaxed text-center">
                     Professional portraits and event coverage honoring your milestones and achievements.
                   </p>
                 </div>
@@ -126,19 +126,19 @@ const Services = () => {
                       className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
-                  <h3 className="text-xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase">
+                  <h3 className="text-xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase text-center">
                     Family & Group Portraits
                   </h3>
-                  <p className="text-gray-500 dark:text-gray-400 font-light leading-relaxed">
+                  <p className="text-gray-500 dark:text-gray-400 font-light leading-relaxed text-center">
                     Natural, joyful photos perfect for holiday cards, home displays, and keepsakes.
                   </p>
                 </div>
 
                 <div className="space-y-6 md:col-span-2">
-                  <h3 className="text-xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase">
+                  <h3 className="text-xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase text-center">
                     Lifestyle Photography
                   </h3>
-                  <p className="text-gray-500 dark:text-gray-400 font-light leading-relaxed">
+                  <p className="text-gray-500 dark:text-gray-400 font-light leading-relaxed text-center">
                     Authentic, everyday moments captured creatively for social media, announcements, and personal branding.
                   </p>
                 </div>

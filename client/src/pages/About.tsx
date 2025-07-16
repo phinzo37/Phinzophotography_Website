@@ -72,7 +72,7 @@ const About = () => {
               </motion.div>
 
               {/* Images Column */}
-              <div className="relative aspect-[3/4] cursor-pointer" onClick={toggleImage}>
+              <div className="relative aspect-[3/4] cursor-pointer w-96 mx-auto" onClick={toggleImage}>
                 <div className="relative w-full h-full">
                   <AnimatePresence mode="wait">
                     {activeImage === 1 && (

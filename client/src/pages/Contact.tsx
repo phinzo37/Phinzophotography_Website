@@ -34,13 +34,13 @@ const Contact = () => {
               className="space-y-12"
             >
               <div className="space-y-8">
-                <h2 className="text-2xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase">
+                <h2 className="text-2xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase text-center">
                   Contact Information
                 </h2>
                 <div className="space-y-6">
                   <a
                     href="mailto:phinzophotography@gmail.com"
-                    className="flex items-center space-x-4 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors group"
+                    className="flex items-center justify-center space-x-4 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors group"
                   >
                     <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -49,14 +49,14 @@ const Contact = () => {
                   </a>
                   <a
                     href="tel:+14435277259"
-                    className="flex items-center space-x-4 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors group"
+                    className="flex items-center justify-center space-x-4 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors group"
                   >
                     <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                     <span className="text-sm tracking-[0.1em]">(443) 527-7259</span>
                   </a>
-                  <div className="flex items-center space-x-4 text-gray-500 dark:text-gray-400 group">
+                  <div className="flex items-center justify-center space-x-4 text-gray-500 dark:text-gray-400 group">
                     <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -67,7 +67,7 @@ const Contact = () => {
                     href="https://wa.me/+14435277259"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-4 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors group"
+                    className="flex items-center justify-center space-x-4 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors group"
                   >
                     <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 2C6.48 2 2 6.48 2 12c0 5.52 4.48 10 10 10s10-4.48 10-10c0-5.52-4.48-10-10-10zm0 18c-4.41 0-8-3.59-8-8 0-4.41 3.59-8 8-8s8 3.59 8 8c0 4.41-3.59 8-8 8zm-1-6h2v2h-2v-2zm0-8h2v6h-2V6z" />
@@ -78,10 +78,10 @@ const Contact = () => {
               </div>
 
               <div className="space-y-6">
-                <h3 className="text-xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase">
+                <h3 className="text-xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase text-center">
                   Working Hours
                 </h3>
-                <p className="text-sm tracking-[0.1em] text-gray-500 dark:text-gray-400">
+                <p className="text-sm tracking-[0.1em] text-gray-500 dark:text-gray-400 text-center">
                   Available Daily<br />
                   8:00 AM - 8:00 PM
                 </p>
