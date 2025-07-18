@@ -1,13 +1,29 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { loadSiteSections } from '../services/siteService';
+import { SiteSection } from '../models/SiteSection';
 
 const Home = () => {
+  const [sections, setSections] = useState<Record<string, SiteSection>>({});
+  
+  useEffect(() => {
+    // Load site sections and convert to a map for easy lookup
+    const siteData = loadSiteSections();
+    const sectionsMap: Record<string, SiteSection> = {};
+    
+    siteData.forEach(section => {
+      sectionsMap[section.id] = section;
+    });
+    
+    setSections(sectionsMap);
+  }, []);
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen bg-white dark:bg-black pt-32"
+      className="min-h-screen bg-gray-50 dark:bg-black pt-32"
     >
       {/* Hero Section */}
       <div className="container mx-auto px-8">
@@ -18,6 +34,17 @@ const Home = () => {
             transition={{ delay: 0.2 }}
             className="max-w-5xl"
           >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mb-8"
+            >
+              <p className="text-xl md:text-2xl font-light tracking-[0.15em] text-gray-700 dark:text-gray-300 relative inline-block">
+                <span className="relative z-10 px-2">WELCOME TO MY SITE</span>
+                <span className="absolute h-[1px] w-full bg-gradient-to-r from-transparent via-gray-400 dark:via-gray-600 to-transparent bottom-0 left-0"></span>
+              </p>
+            </motion.div>
             <h1 className="text-[2.5rem] md:text-[4rem] lg:text-[5rem] font-extralight tracking-[0.2em] text-gray-900 dark:text-white mb-6 leading-tight">
               <motion.span
                 initial={{ opacity: 0, y: 20 }}
@@ -25,7 +52,7 @@ const Home = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="inline-block"
               >
-                HELLO, I'M ANIL,{' '}
+                PHINZO PHOTOGRAPHY{' '}
               </motion.span>
               <motion.span 
                 initial={{ opacity: 0, y: 20 }}
@@ -33,7 +60,7 @@ const Home = () => {
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="text-gray-500 dark:text-gray-500 inline-block"
               >
-                PHOTOGRAPHER BASED IN DMV
+                BASED IN THE DMV
               </motion.span>
             </h1>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mt-16">
@@ -67,7 +94,7 @@ const Home = () => {
             {/* Featured Image 1 */}
             <div className="group relative overflow-hidden">
               <img
-                src="/images/featured-1.jpg"
+                src={sections.featured1?.currentPhotoUrl || "/images/featured-1.jpg"}
                 alt="Featured Work 1"
                 className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -82,7 +109,7 @@ const Home = () => {
             {/* Featured Image 2 */}
             <div className="group relative overflow-hidden">
               <img
-                src="/images/featured-2.jpg"
+                src={sections.featured2?.currentPhotoUrl || "/images/featured-2.jpg"}
                 alt="Featured Work 2"
                 className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -97,7 +124,7 @@ const Home = () => {
             {/* Featured Image 3 */}
             <div className="group relative overflow-hidden">
               <img
-                src="/images/featured-3.jpg"
+                src={sections.featured3?.currentPhotoUrl || "/images/featured-3.jpg"}
                 alt="Featured Work 3"
                 className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -125,7 +152,7 @@ const Home = () => {
             <div className="group">
               <div className="aspect-w-16 aspect-h-9 mb-8 overflow-hidden">
                 <img
-                  src="/images/collection-nature.jpg"
+                  src={sections['collection-nature']?.currentPhotoUrl || "/images/collection-nature.jpg"}
                   alt="Nature Collection"
                   className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105"
                 />
@@ -148,7 +175,7 @@ const Home = () => {
             <div className="group">
               <div className="aspect-w-16 aspect-h-9 mb-8 overflow-hidden">
                 <img
-                  src="/images/collection-portrait.jpg"
+                  src={sections['collection-portrait']?.currentPhotoUrl || "/images/collection-portrait.jpg"}
                   alt="Portrait Collection"
                   className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105"
                 />

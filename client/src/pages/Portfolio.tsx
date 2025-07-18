@@ -65,7 +65,7 @@ const Portfolio = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen bg-white dark:bg-black pt-24"
+      className="min-h-screen bg-gray-50 dark:bg-black pt-24"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
         <motion.div

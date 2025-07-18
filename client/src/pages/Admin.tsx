@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import SiteSectionManager from '../components/SiteSectionManager';
 
 interface Photo {
   _id: string;
@@ -214,6 +215,9 @@ const Admin = () => {
             <p className="text-lg text-green-400 mt-2">Active</p>
           </div>
         </div>
+        
+        {/* Site Section Manager */}
+        <SiteSectionManager photos={photos} />
 
 
 
