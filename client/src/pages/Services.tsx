@@ -53,12 +53,12 @@ const Services = () => {
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-48">
-              <div className="space-y-6">
-                <div className="aspect-w-3 aspect-h-4 mb-8 overflow-hidden">
+              <div className="space-y-6 group">
+                <div className="overflow-hidden">
                   <img
                     src={sections.couples?.currentPhotoUrl || "/images/service-couples.jpg"}
                     alt="Couples & Engagements"
-                    className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <h3 className="text-xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase text-center">
@@ -69,12 +69,12 @@ const Services = () => {
                 </p>
               </div>
 
-              <div className="space-y-6">
-                <div className="aspect-w-3 aspect-h-4 mb-8 overflow-hidden">
+              <div className="space-y-6 group">
+                <div className="overflow-hidden">
                   <img
                     src={sections.weddings?.currentPhotoUrl || "/images/service-weddings.jpg"}
                     alt="Weddings & Elopements"
-                    className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <h3 className="text-xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase text-center">
@@ -85,12 +85,12 @@ const Services = () => {
                 </p>
               </div>
 
-              <div className="space-y-6">
-                <div className="aspect-w-3 aspect-h-4 mb-8 overflow-hidden">
+              <div className="space-y-6 group">
+                <div className="overflow-hidden">
                   <img
                     src={sections.maternity?.currentPhotoUrl || "/images/service-maternity.jpg"}
                     alt="Maternity & Baby Showers"
-                    className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <h3 className="text-xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase text-center">
@@ -101,12 +101,12 @@ const Services = () => {
                 </p>
               </div>
 
-              <div className="space-y-6">
-                <div className="aspect-w-3 aspect-h-4 mb-8 overflow-hidden">
+              <div className="space-y-6 group">
+                <div className="overflow-hidden">
                   <img
                     src={sections.events?.currentPhotoUrl || "/images/service-events.jpg"}
                     alt="Birthday Parties & Special Events"
-                    className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <h3 className="text-xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase text-center">
@@ -117,12 +117,12 @@ const Services = () => {
                 </p>
               </div>
 
-              <div className="space-y-6">
-                <div className="aspect-w-3 aspect-h-4 mb-8 overflow-hidden">
+              <div className="space-y-6 group">
+                <div className="overflow-hidden">
                   <img
                     src={sections.graduations?.currentPhotoUrl || "/images/service-graduations.jpg"}
                     alt="Graduations"
-                    className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <h3 className="text-xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase text-center">
@@ -133,12 +133,12 @@ const Services = () => {
                 </p>
               </div>
 
-              <div className="space-y-6">
-                <div className="aspect-w-3 aspect-h-4 mb-8 overflow-hidden">
+              <div className="space-y-6 group">
+                <div className="overflow-hidden">
                   <img
                     src={sections.family?.currentPhotoUrl || "/images/service-family.jpg"}
                     alt="Family & Group Portraits"
-                    className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <h3 className="text-xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase text-center">
