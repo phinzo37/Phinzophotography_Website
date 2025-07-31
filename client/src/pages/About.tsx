@@ -13,9 +13,9 @@ const About = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen bg-gray-50 dark:bg-black pt-32"
+      className="min-h-screen bg-gray-50 dark:bg-black pt-48"
     >
-      <div className="container mx-auto px-8">
+      <div className="container mx-auto px-8 ml-32">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ y: 20, opacity: 0 }}

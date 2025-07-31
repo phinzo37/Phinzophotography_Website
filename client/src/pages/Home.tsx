@@ -6,6 +6,7 @@ import { SiteSection } from '../models/SiteSection';
 
 const Home = () => {
   const [sections, setSections] = useState<Record<string, SiteSection>>({});
+  const [currentSlide, setCurrentSlide] = useState(0);
   
   useEffect(() => {
     // Load site sections and convert to a map for easy lookup
@@ -18,6 +19,13 @@ const Home = () => {
     
     setSections(sectionsMap);
   }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % 3);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -26,7 +34,7 @@ const Home = () => {
       className="min-h-screen bg-gray-50 dark:bg-black pt-32"
     >
       {/* Hero Section */}
-      <div className="container mx-auto px-8">
+      <div className="container mx-auto px-8 ml-24">
         <div className="min-h-[80vh] flex flex-col items-center justify-center text-center">
           <motion.div
             initial={{ y: 20, opacity: 0 }}
@@ -63,20 +71,7 @@ const Home = () => {
                 BASED IN THE DMV
               </motion.span>
             </h1>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mt-16">
-              <Link
-                to="/portfolio"
-                className="text-sm tracking-[0.2em] uppercase text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-              >
-                View Portfolio
-              </Link>
-              <Link
-                to="/collections"
-                className="text-sm tracking-[0.2em] uppercase text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-              >
-                View Collections
-              </Link>
-            </div>
+
           </motion.div>
         </div>
 
@@ -85,7 +80,7 @@ const Home = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="py-32"
+          className="pt-8 pb-32"
         >
           <h2 className="text-4xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white mb-24 text-center uppercase">
             Recent Work
@@ -143,58 +138,54 @@ const Home = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className="py-32 border-t border-gray-100 dark:border-gray-800"
+          className="pt-8 pb-32 border-t border-gray-100 dark:border-gray-800"
         >
           <h2 className="text-4xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white mb-24 text-center uppercase">
             Collections
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32">
-            <div className="group">
-              <div className="aspect-w-16 aspect-h-9 mb-8 overflow-hidden">
+          <div className="relative overflow-hidden">
+            <div className="flex transition-transform duration-500 ease-in-out" style={{transform: `translateX(-${currentSlide * 100}%)`}}>
+              <div className="w-full flex-shrink-0">
                 <img
                   src={sections['collection-nature']?.currentPhotoUrl || "/images/collection-nature.jpg"}
-                  alt="Nature Collection"
-                  className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105"
+                  alt="Collection Image 1"
+                  className="w-full h-[700px] object-cover"
                 />
               </div>
-              <div className="space-y-6">
-                <h3 className="text-2xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase">
-                  Nature Collection
-                </h3>
-                <p className="text-gray-500 dark:text-gray-400 font-light leading-relaxed">
-                  A curated collection of landscape and nature photography spanning multiple seasons and locations.
-                </p>
-                <Link
-                  to="/collections/nature"
-                  className="inline-block text-sm tracking-[0.2em] uppercase text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-                >
-                  View Collection
-                </Link>
-              </div>
-            </div>
-            <div className="group">
-              <div className="aspect-w-16 aspect-h-9 mb-8 overflow-hidden">
+              <div className="w-full flex-shrink-0">
                 <img
                   src={sections['collection-portrait']?.currentPhotoUrl || "/images/collection-portrait.jpg"}
-                  alt="Portrait Collection"
-                  className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105"
+                  alt="Collection Image 2"
+                  className="w-full h-[700px] object-cover"
                 />
               </div>
-              <div className="space-y-6">
-                <h3 className="text-2xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase">
-                  Portrait Collection
-                </h3>
-                <p className="text-gray-500 dark:text-gray-400 font-light leading-relaxed">
-                  An intimate exploration of human expressions and stories through portraiture.
-                </p>
-                <Link
-                  to="/collections/portrait"
-                  className="inline-block text-sm tracking-[0.2em] uppercase text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-                >
-                  View Collection
-                </Link>
+              <div className="w-full flex-shrink-0">
+                <img
+                  src={sections.featured1?.currentPhotoUrl || "/images/featured-1.jpg"}
+                  alt="Collection Image 3"
+                  className="w-full h-[700px] object-cover"
+                />
               </div>
             </div>
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+              {[0, 1, 2].map((index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-colors ${
+                    currentSlide === index ? 'bg-white' : 'bg-white/50'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+          <div className="text-center mt-12">
+            <Link
+              to="/portfolio"
+              className="inline-block text-sm tracking-[0.2em] uppercase text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+            >
+              View Collection
+            </Link>
           </div>
         </motion.div>
       </div>

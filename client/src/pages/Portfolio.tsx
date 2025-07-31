@@ -65,19 +65,19 @@ const Portfolio = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen bg-gray-50 dark:bg-black pt-24"
+      className="min-h-screen bg-gray-50 dark:bg-black pt-48"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+      <div className="container mx-auto px-8 ml-72">
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="text-center mb-16"
+          className="text-center mb-24"
         >
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight text-gray-900 dark:text-white mb-4 text-center">
-            Portfolio
+          <h1 className="text-[2.5rem] md:text-[4rem] font-extralight tracking-[0.2em] text-gray-900 dark:text-white mb-6">
+            PORTFOLIO
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto text-center">
+          <p className="text-lg font-light text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
             Explore my collection of photographs capturing moments, emotions, and the beauty of the world around us.
           </p>
         </motion.div>
@@ -88,15 +88,15 @@ const Portfolio = () => {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="mb-12"
+            className="mb-16"
           >
             <div className="flex flex-wrap justify-center gap-4">
               <button
                 onClick={() => setSelectedAlbum(null)}
-                className={`px-6 py-2 rounded-full border transition-colors ${
+                className={`px-6 py-2 text-sm tracking-[0.1em] uppercase transition-colors ${
                   selectedAlbum === null
-                    ? 'bg-gray-900 text-white border-gray-900'
-                    : 'bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 hover:border-gray-900'
+                    ? 'text-gray-900 dark:text-white border-b border-gray-900 dark:border-white'
+                    : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                 }`}
               >
                 All Photos
@@ -105,10 +105,10 @@ const Portfolio = () => {
                 <button
                   key={album}
                   onClick={() => setSelectedAlbum(album)}
-                  className={`px-6 py-2 rounded-full border transition-colors ${
+                  className={`px-6 py-2 text-sm tracking-[0.1em] uppercase transition-colors ${
                     selectedAlbum === album
-                      ? 'bg-gray-900 text-white border-gray-900'
-                      : 'bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 hover:border-gray-900'
+                      ? 'text-gray-900 dark:text-white border-b border-gray-900 dark:border-white'
+                      : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                   }`}
                 >
                   {album}
@@ -123,7 +123,7 @@ const Portfolio = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 lg:gap-8 justify-items-center"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"
         >
           {filteredPhotos.map((photo, index) => (
             <motion.div
@@ -131,22 +131,24 @@ const Portfolio = () => {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.1 * index }}
-              className="group cursor-pointer"
+              className="space-y-6 group cursor-pointer"
             >
-              <div className="relative overflow-hidden rounded-lg shadow-lg">
+              <div className="overflow-hidden">
                 <img
                   src={photo.url}
                   alt={photo.title}
-                  className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-[400px] object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                  <div className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center p-4">
-                    <h3 className="text-xl font-medium mb-2">{photo.title}</h3>
-                    {photo.description && (
-                      <p className="text-sm">{photo.description}</p>
-                    )}
-                  </div>
-                </div>
+              </div>
+              <div className="text-center">
+                <h3 className="text-lg font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase mb-2">
+                  {photo.title}
+                </h3>
+                {photo.description && (
+                  <p className="text-gray-500 dark:text-gray-400 font-light leading-relaxed">
+                    {photo.description}
+                  </p>
+                )}
               </div>
             </motion.div>
           ))}
@@ -158,7 +160,7 @@ const Portfolio = () => {
             animate={{ y: 0, opacity: 1 }}
             className="text-center py-16"
           >
-            <p className="text-gray-600 text-lg">No photos found in this category.</p>
+            <p className="text-gray-500 dark:text-gray-400 font-light text-lg">No photos found in this category.</p>
           </motion.div>
         )}
       </div>

@@ -22,9 +22,9 @@ const Services = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen bg-gray-50 dark:bg-black pt-32"
+      className="min-h-screen bg-gray-50 dark:bg-black pt-48"
     >
-      <div className="container mx-auto px-8">
+      <div className="container mx-auto px-8 ml-24">
         {/* Header */}
         <motion.div
           initial={{ y: 20, opacity: 0 }}
@@ -35,9 +35,6 @@ const Services = () => {
           <h1 className="text-[2.5rem] md:text-[4rem] font-extralight tracking-[0.2em] text-gray-900 dark:text-white mb-6">
             SERVICES
           </h1>
-          <p className="text-lg font-light text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
-            Capturing life's precious moments with an artistic and timeless approach.
-          </p>
         </motion.div>
 
         {/* Photography Services */}
@@ -45,13 +42,9 @@ const Services = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="space-y-24"
+          className="space-y-16"
         >
-          <div className="space-y-16">
-            <h2 className="text-2xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase text-center">
-              Photography Services
-            </h2>
-            
+          <div className="space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-48">
               <div className="space-y-6 group">
                 <div className="overflow-hidden">

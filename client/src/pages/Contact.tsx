@@ -6,9 +6,9 @@ const Contact = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen bg-gray-50 dark:bg-black pt-32"
+      className="min-h-screen bg-gray-50 dark:bg-black pt-40"
     >
-      <div className="container mx-auto px-8">
+      <div className="container mx-auto px-8 ml-40">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <motion.div
@@ -20,7 +20,7 @@ const Contact = () => {
             <h1 className="text-[2.5rem] md:text-[4rem] font-extralight tracking-[0.2em] text-gray-900 dark:text-white mb-6">
               GET IN TOUCH
             </h1>
-            <p className="text-lg font-light text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg font-light text-gray-500 dark:text-gray-400 max-w-2xl mx-auto whitespace-nowrap">
               Let's create something beautiful together. Feel free to reach out through any of the following channels.
             </p>
           </motion.div>
