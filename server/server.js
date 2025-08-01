@@ -11,8 +11,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
-const PORT = 3001;
-const JWT_SECRET = 'your-secret-key';
+const PORT = process.env.PORT || 3001;
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
 
 // Middleware
 app.use(cors());
@@ -38,9 +38,22 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-// In-memory data store (replace with database)
+// Simple file-based data store
+const dataFile = join(__dirname, 'photos.json');
 let photos = [];
 let photoIdCounter = 1;
+
+// Load existing data
+if (fs.existsSync(dataFile)) {
+  const data = JSON.parse(fs.readFileSync(dataFile, 'utf8'));
+  photos = data.photos || [];
+  photoIdCounter = data.counter || 1;
+}
+
+// Save data function
+const saveData = () => {
+  fs.writeFileSync(dataFile, JSON.stringify({ photos, counter: photoIdCounter }, null, 2));
+};
 
 // Admin credentials (replace with database)
 const ADMIN_USERNAME = 'admin';
@@ -90,11 +103,12 @@ app.post('/api/photos', authenticateToken, upload.single('photo'), (req, res) =>
     title,
     description,
     album,
-    url: `http://localhost:${PORT}/uploads/${req.file.filename}`,
+    url: `/uploads/${req.file.filename}`,
     filename: req.file.filename
   };
 
   photos.unshift(photo);
+  saveData();
   res.json(photo);
 });
 
@@ -108,6 +122,7 @@ app.put('/api/photos/:id', authenticateToken, (req, res) => {
   }
 
   photos[photoIndex] = { ...photos[photoIndex], title, description, album };
+  saveData();
   res.json(photos[photoIndex]);
 });
 
@@ -128,6 +143,7 @@ app.delete('/api/photos/:id', authenticateToken, (req, res) => {
   }
 
   photos.splice(photoIndex, 1);
+  saveData();
   res.json({ message: 'Photo deleted' });
 });
 
