@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 interface Photo {
   _id: string;
@@ -9,7 +9,7 @@ interface Photo {
   album?: string;
 }
 
-const API_BASE = 'http://localhost:3001/api';
+const API_BASE = "http://147.93.181.97:3001/api";
 
 const Portfolio = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
@@ -25,8 +25,8 @@ const Portfolio = () => {
         setPhotos(data);
         setLoading(false);
       } catch (error) {
-        console.error('Error loading photos:', error);
-        setError('Failed to load photos');
+        console.error("Error loading photos:", error);
+        setError("Failed to load photos");
         setLoading(false);
       }
     };
@@ -35,13 +35,19 @@ const Portfolio = () => {
   }, []);
 
   // Get unique albums, including photos without albums
-  const albums = Array.from(new Set(photos.map(photo => photo.album || 'Uncategorized').filter(Boolean)));
+  const albums = Array.from(
+    new Set(
+      photos.map((photo) => photo.album || "Uncategorized").filter(Boolean)
+    )
+  );
 
   // Filter photos based on selected album, show all if no album is selected
   const filteredPhotos = selectedAlbum
-    ? selectedAlbum === 'Uncategorized'
-      ? photos.filter(photo => !photo.album)
-      : photos.filter(photo => photo.album?.toLowerCase() === selectedAlbum.toLowerCase())
+    ? selectedAlbum === "Uncategorized"
+      ? photos.filter((photo) => !photo.album)
+      : photos.filter(
+          (photo) => photo.album?.toLowerCase() === selectedAlbum.toLowerCase()
+        )
     : photos;
 
   if (loading) {
@@ -78,7 +84,8 @@ const Portfolio = () => {
             PORTFOLIO
           </h1>
           <p className="text-lg font-light text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
-            Explore my collection of photographs capturing moments, emotions, and the beauty of the world around us.
+            Explore my collection of photographs capturing moments, emotions,
+            and the beauty of the world around us.
           </p>
         </motion.div>
 
@@ -95,8 +102,8 @@ const Portfolio = () => {
                 onClick={() => setSelectedAlbum(null)}
                 className={`px-6 py-2 text-sm tracking-[0.1em] uppercase transition-colors ${
                   selectedAlbum === null
-                    ? 'text-gray-900 dark:text-white border-b border-gray-900 dark:border-white'
-                    : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                    ? "text-gray-900 dark:text-white border-b border-gray-900 dark:border-white"
+                    : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                 }`}
               >
                 All Photos
@@ -107,8 +114,8 @@ const Portfolio = () => {
                   onClick={() => setSelectedAlbum(album)}
                   className={`px-6 py-2 text-sm tracking-[0.1em] uppercase transition-colors ${
                     selectedAlbum === album
-                      ? 'text-gray-900 dark:text-white border-b border-gray-900 dark:border-white'
-                      : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                      ? "text-gray-900 dark:text-white border-b border-gray-900 dark:border-white"
+                      : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                   }`}
                 >
                   {album}
@@ -160,7 +167,9 @@ const Portfolio = () => {
             animate={{ y: 0, opacity: 1 }}
             className="text-center py-16"
           >
-            <p className="text-gray-500 dark:text-gray-400 font-light text-lg">No photos found in this category.</p>
+            <p className="text-gray-500 dark:text-gray-400 font-light text-lg">
+              No photos found in this category.
+            </p>
           </motion.div>
         )}
       </div>
@@ -168,4 +177,4 @@ const Portfolio = () => {
   );
 };
 
-export default Portfolio; 
+export default Portfolio;

@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import SiteSectionManager from '../components/SiteSectionManager';
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import SiteSectionManager from "../components/SiteSectionManager";
 
 interface Photo {
   _id: string;
@@ -11,7 +11,7 @@ interface Photo {
   album?: string;
 }
 
-const API_BASE = 'http://localhost:3001/api';
+const API_BASE = "http://147.93.181.97:3001/api";
 
 const Admin = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
@@ -19,9 +19,9 @@ const Admin = () => {
   const [uploading, setUploading] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [formData, setFormData] = useState({
-    title: '',
-    description: '',
-    album: '',
+    title: "",
+    description: "",
+    album: "",
   });
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [uploadSuccess, setUploadSuccess] = useState<string | null>(null);
@@ -34,7 +34,7 @@ const Admin = () => {
   }, []);
 
   useEffect(() => {
-    const albums = new Set(photos.map(p => p.album).filter(Boolean));
+    const albums = new Set(photos.map((p) => p.album).filter(Boolean));
     setStats({ totalPhotos: photos.length, albums: albums.size });
   }, [photos]);
 
@@ -44,7 +44,7 @@ const Admin = () => {
       const data = await response.json();
       setPhotos(data);
     } catch (error) {
-      console.error('Error fetching photos:', error);
+      console.error("Error fetching photos:", error);
     } finally {
       setLoading(false);
     }
@@ -70,81 +70,83 @@ const Admin = () => {
     e.preventDefault();
     if (!selectedFile) return;
 
-    const token = localStorage.getItem('adminToken');
+    const token = localStorage.getItem("adminToken");
     if (!token) {
-      navigate('/admin-login');
+      navigate("/admin-login");
       return;
     }
 
     setUploading(true);
     setUploadError(null);
     setUploadSuccess(null);
-    
+
     try {
       const formDataToSend = new FormData();
-      formDataToSend.append('photo', selectedFile);
-      formDataToSend.append('title', formData.title);
-      formDataToSend.append('description', formData.description);
-      formDataToSend.append('album', formData.album);
+      formDataToSend.append("photo", selectedFile);
+      formDataToSend.append("title", formData.title);
+      formDataToSend.append("description", formData.description);
+      formDataToSend.append("album", formData.album);
 
       const response = await fetch(`${API_BASE}/photos`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Authorization': `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
-        body: formDataToSend
+        body: formDataToSend,
       });
 
       if (response.ok) {
         const newPhoto = await response.json();
-        setPhotos(prev => [newPhoto, ...prev]);
-        setFormData({ title: '', description: '', album: '' });
+        setPhotos((prev) => [newPhoto, ...prev]);
+        setFormData({ title: "", description: "", album: "" });
         setSelectedFile(null);
-        setUploadSuccess('Photo uploaded successfully!');
-        
-        const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
-        if (fileInput) fileInput.value = '';
+        setUploadSuccess("Photo uploaded successfully!");
+
+        const fileInput = document.querySelector(
+          'input[type="file"]'
+        ) as HTMLInputElement;
+        if (fileInput) fileInput.value = "";
       } else {
-        setUploadError('Upload failed');
+        setUploadError("Upload failed");
       }
     } catch (error) {
-      setUploadError('Error uploading photo');
+      setUploadError("Error uploading photo");
     } finally {
       setUploading(false);
     }
   };
 
   const handleDelete = async (id: string) => {
-    const token = localStorage.getItem('adminToken');
+    const token = localStorage.getItem("adminToken");
     if (!token) return;
 
     try {
       const response = await fetch(`${API_BASE}/photos/${id}`, {
-        method: 'DELETE',
+        method: "DELETE",
         headers: {
-          'Authorization': `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       });
 
       if (response.ok) {
-        setPhotos(prev => prev.filter(photo => photo._id !== id));
+        setPhotos((prev) => prev.filter((photo) => photo._id !== id));
       }
     } catch (error) {
-      console.error('Error deleting photo:', error);
+      console.error("Error deleting photo:", error);
     }
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('adminToken');
-    navigate('/admin-login');
+    localStorage.removeItem("adminToken");
+    navigate("/admin-login");
   };
 
   const handleEdit = (photo: Photo) => {
     setEditingPhoto(photo);
     setFormData({
       title: photo.title,
-      description: photo.description || '',
-      album: photo.album || ''
+      description: photo.description || "",
+      album: photo.album || "",
     });
   };
 
@@ -153,25 +155,25 @@ const Admin = () => {
     if (!editingPhoto) return;
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 500));
-      
-      setPhotos(prev => prev.map(photo => 
-        photo._id === editingPhoto._id 
-          ? { ...photo, ...formData }
-          : photo
-      ));
-      
+      await new Promise((resolve) => setTimeout(resolve, 500));
+
+      setPhotos((prev) =>
+        prev.map((photo) =>
+          photo._id === editingPhoto._id ? { ...photo, ...formData } : photo
+        )
+      );
+
       setEditingPhoto(null);
-      setFormData({ title: '', description: '', album: '' });
-      setUploadSuccess('Photo updated successfully!');
+      setFormData({ title: "", description: "", album: "" });
+      setUploadSuccess("Photo updated successfully!");
     } catch (error) {
-      setUploadError('Error updating photo');
+      setUploadError("Error updating photo");
     }
   };
 
   const cancelEdit = () => {
     setEditingPhoto(null);
-    setFormData({ title: '', description: '', album: '' });
+    setFormData({ title: "", description: "", album: "" });
   };
 
   if (loading) {
@@ -191,7 +193,9 @@ const Admin = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-light tracking-tight text-white">Admin Panel</h1>
+          <h1 className="text-4xl font-light tracking-tight text-white">
+            Admin Panel
+          </h1>
           <button
             onClick={handleLogout}
             className="bg-gray-800 text-white py-2 px-6 rounded hover:bg-gray-700 transition-colors border border-gray-600"
@@ -204,27 +208,29 @@ const Admin = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-gray-900 p-6 rounded-lg border border-gray-700">
             <h3 className="text-lg font-medium text-white">Total Photos</h3>
-            <p className="text-3xl font-light text-gray-300 mt-2">{stats.totalPhotos}</p>
+            <p className="text-3xl font-light text-gray-300 mt-2">
+              {stats.totalPhotos}
+            </p>
           </div>
           <div className="bg-gray-900 p-6 rounded-lg border border-gray-700">
             <h3 className="text-lg font-medium text-white">Albums</h3>
-            <p className="text-3xl font-light text-gray-300 mt-2">{stats.albums}</p>
+            <p className="text-3xl font-light text-gray-300 mt-2">
+              {stats.albums}
+            </p>
           </div>
           <div className="bg-gray-900 p-6 rounded-lg border border-gray-700">
             <h3 className="text-lg font-medium text-white">Status</h3>
             <p className="text-lg text-green-400 mt-2">Active</p>
           </div>
         </div>
-        
+
         {/* Site Section Manager */}
         <SiteSectionManager photos={photos} />
-
-
 
         {/* Upload/Edit Form */}
         <div className="mb-16 bg-gray-900 p-8 rounded-lg shadow-sm border border-gray-700">
           <h2 className="text-2xl font-light mb-8 text-white tracking-tight">
-            {editingPhoto ? 'Edit Photo' : 'Upload New Photo'}
+            {editingPhoto ? "Edit Photo" : "Upload New Photo"}
           </h2>
           {uploadError && (
             <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-600 rounded">
@@ -236,7 +242,10 @@ const Admin = () => {
               {uploadSuccess}
             </div>
           )}
-          <form onSubmit={editingPhoto ? handleUpdate : handleSubmit} className="space-y-6 max-w-xl">
+          <form
+            onSubmit={editingPhoto ? handleUpdate : handleSubmit}
+            className="space-y-6 max-w-xl"
+          >
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">
                 Photo
@@ -295,12 +304,16 @@ const Admin = () => {
                 type="submit"
                 className={`flex-1 py-3 px-6 rounded border border-transparent transition-colors ${
                   uploading
-                    ? 'bg-gray-400 text-white cursor-not-allowed'
-                    : 'bg-gray-900 text-white hover:bg-gray-800'
+                    ? "bg-gray-400 text-white cursor-not-allowed"
+                    : "bg-gray-900 text-white hover:bg-gray-800"
                 }`}
                 disabled={uploading}
               >
-                {uploading ? 'Processing...' : editingPhoto ? 'Update Photo' : 'Upload Photo'}
+                {uploading
+                  ? "Processing..."
+                  : editingPhoto
+                  ? "Update Photo"
+                  : "Upload Photo"}
               </button>
               {editingPhoto && (
                 <button
@@ -317,7 +330,9 @@ const Admin = () => {
 
         {/* Photo Grid */}
         <div className="bg-gray-900 p-8 rounded-lg shadow-sm border border-gray-700">
-          <h2 className="text-2xl font-light mb-8 text-white tracking-tight">Manage Photos</h2>
+          <h2 className="text-2xl font-light mb-8 text-white tracking-tight">
+            Manage Photos
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {photos.map((photo) => (
               <motion.div
@@ -350,10 +365,14 @@ const Admin = () => {
                 <div className="p-4">
                   <h3 className="font-medium text-white">{photo.title}</h3>
                   {photo.description && (
-                    <p className="text-sm text-gray-300 mt-1">{photo.description}</p>
+                    <p className="text-sm text-gray-300 mt-1">
+                      {photo.description}
+                    </p>
                   )}
                   {photo.album && (
-                    <p className="text-sm text-gray-400 mt-1">Album: {photo.album}</p>
+                    <p className="text-sm text-gray-400 mt-1">
+                      Album: {photo.album}
+                    </p>
                   )}
                 </div>
               </motion.div>
@@ -365,4 +384,4 @@ const Admin = () => {
   );
 };
 
-export default Admin; 
+export default Admin;
