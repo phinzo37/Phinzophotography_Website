@@ -103,7 +103,7 @@ app.post('/api/photos', authenticateToken, upload.single('photo'), (req, res) =>
     title,
     description,
     album,
-    url: `/uploads/${req.file.filename}`,
+    url: `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`,
     filename: req.file.filename
   };
 
