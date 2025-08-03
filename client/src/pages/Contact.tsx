@@ -1,6 +1,51 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    setSuccess(false);
+
+    try {
+      const response = await fetch('http://147.93.181.97:3001/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSuccess(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setError('Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      setError('Failed to send message. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -95,37 +140,68 @@ const Contact = () => {
               transition={{ delay: 0.4 }}
               className="space-y-12"
             >
-              <form className="space-y-8">
+              <form onSubmit={handleSubmit} className="space-y-8">
+                {success && (
+                  <div className="p-4 bg-green-50 border border-green-200 text-green-600 rounded text-center">
+                    Message sent successfully! I'll get back to you soon.
+                  </div>
+                )}
+                {error && (
+                  <div className="p-4 bg-red-50 border border-red-200 text-red-600 rounded text-center">
+                    {error}
+                  </div>
+                )}
                 <div className="space-y-6">
                   <input
                     type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     placeholder="YOUR NAME"
                     className="w-full px-4 py-4 bg-gray-50 dark:bg-transparent border-0 border-b border-gray-200 dark:border-gray-800 text-sm tracking-[0.2em] uppercase focus:ring-0 focus:border-gray-400 dark:focus:border-gray-600 transition-colors"
+                    required
                   />
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="YOUR EMAIL"
                     className="w-full px-4 py-4 bg-gray-50 dark:bg-transparent border-0 border-b border-gray-200 dark:border-gray-800 text-sm tracking-[0.2em] uppercase focus:ring-0 focus:border-gray-400 dark:focus:border-gray-600 transition-colors"
+                    required
                   />
                   <input
                     type="text"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
                     placeholder="SUBJECT"
                     className="w-full px-4 py-4 bg-gray-50 dark:bg-transparent border-0 border-b border-gray-200 dark:border-gray-800 text-sm tracking-[0.2em] uppercase focus:ring-0 focus:border-gray-400 dark:focus:border-gray-600 transition-colors"
+                    required
                   />
                 </div>
                 <div>
                   <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     placeholder="YOUR MESSAGE"
                     rows={6}
                     className="w-full px-4 py-4 bg-gray-50 dark:bg-transparent border-0 border-b border-gray-200 dark:border-gray-800 text-sm tracking-[0.2em] uppercase resize-none focus:ring-0 focus:border-gray-400 dark:focus:border-gray-600 transition-colors"
+                    required
                   ></textarea>
                 </div>
                 <div>
                   <button
                     type="submit"
-                    className="px-8 py-3 bg-gray-100 dark:bg-transparent text-sm tracking-[0.2em] uppercase text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:text-gray-300 transition-colors rounded-sm"
+                    disabled={loading}
+                    className={`px-8 py-3 text-sm tracking-[0.2em] uppercase transition-colors rounded-sm ${
+                      loading 
+                        ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+                        : 'bg-gray-100 dark:bg-transparent text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:text-gray-300'
+                    }`}
                   >
-                    SEND MESSAGE
+                    {loading ? 'SENDING...' : 'SEND MESSAGE'}
                   </button>
                 </div>
               </form>
