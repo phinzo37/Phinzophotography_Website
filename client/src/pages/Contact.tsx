@@ -38,10 +38,13 @@ const Contact = () => {
         setSuccess(true);
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
-        setError('Failed to send message. Please try again.');
+        const errorText = await response.text();
+        console.error('Server error:', response.status, errorText);
+        setError(`Server error: ${response.status}`);
       }
     } catch (error) {
-      setError('Failed to send message. Please try again.');
+      console.error('Network error:', error);
+      setError('Network error. Check if backend is running.');
     } finally {
       setLoading(false);
     }
