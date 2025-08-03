@@ -1,5 +1,5 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 const About = () => {
   const [activeImage, setActiveImage] = useState(1);
@@ -28,7 +28,9 @@ const About = () => {
               <h1 className="text-[2.5rem] md:text-[4rem] font-extralight tracking-[0.2em] text-gray-900 dark:text-white mb-6">
                 CAPTURING MOMENTS,
                 <br />
-                <span className="text-gray-500 dark:text-gray-500">TELLING STORIES</span>
+                <span className="text-gray-500 dark:text-gray-500">
+                  TELLING STORIES
+                </span>
               </h1>
             </div>
 
@@ -43,15 +45,30 @@ const About = () => {
               >
                 <div className="prose prose-lg max-w-none dark:prose-invert">
                   <p className="text-lg font-light text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Hey there! I'm Anil Gurung – your friendly neighborhood photographer, 25 years young and totally in love with my camera. I didn't choose photography; it kinda chose me. One day I was snapping random pictures of sunsets, and the next thing I knew, I was hooked. There's something magical about capturing moments that are here one second and gone the next. It's like time travel, but with better filters.
-                  </p>
-                  
-                  <p className="text-lg font-light text-gray-600 dark:text-gray-400 leading-relaxed mt-8">
-                    I love photography because it allows me to tell stories without words. Whether it's a spontaneous laugh, the perfect light hitting just the right spot, or that unplanned candid shot, my goal is to capture not just what you look like, but who you are in that moment. I believe a great photo should make you feel something – even if it's just a little "wow" or "that's awesome!"
+                    Hey there! I'm Anil Gurung – your friendly neighborhood
+                    photographer, 26 years young and totally in love with my
+                    camera. I didn't choose photography; it kinda chose me. My
+                    journey with photography started a few years ago when I
+                    picked up a camera just for fun and quickly realized how
+                    much I loved freezing memories in time. Since then, I’ve
+                    been lucky to turn that passion into a career
                   </p>
 
                   <p className="text-lg font-light text-gray-600 dark:text-gray-400 leading-relaxed mt-8">
-                    So, if you want to work with someone who's equal parts professional and part "Can I sneak in a goofy pose?" – you're in the right place. Thanks for checking out my work, and I can't wait to capture something memorable for you!
+                    I love photography because it allows me to tell stories
+                    without words. Whether it's a spontaneous laugh, the perfect
+                    light hitting just the right spot, or that unplanned candid
+                    shot, my goal is to capture not just what you look like, but
+                    who you are in that moment. I believe a great photo should
+                    make you feel something – even if it's just a little "wow"
+                    or "that's awesome!"
+                  </p>
+
+                  <p className="text-lg font-light text-gray-600 dark:text-gray-400 leading-relaxed mt-8">
+                    So, if you want to work with someone who's equal parts
+                    professional and part "Can I sneak in a goofy pose?" –
+                    you're in the right place. Thanks for checking out my work,
+                    and I can't wait to capture something memorable for you!
                   </p>
                 </div>
 
@@ -72,7 +89,10 @@ const About = () => {
               </motion.div>
 
               {/* Images Column */}
-              <div className="relative aspect-[3/4] cursor-pointer w-96 mx-auto" onClick={toggleImage}>
+              <div
+                className="relative aspect-[3/4] cursor-pointer w-96 mx-auto"
+                onClick={toggleImage}
+              >
                 <div className="relative w-full h-full">
                   <AnimatePresence mode="wait">
                     {activeImage === 1 && (
@@ -113,18 +133,18 @@ const About = () => {
                   <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
                     <button
                       className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                        activeImage === 1 
-                          ? 'bg-white' 
-                          : 'bg-white/50 hover:bg-white/75'
+                        activeImage === 1
+                          ? "bg-white"
+                          : "bg-white/50 hover:bg-white/75"
                       }`}
                       onClick={() => setActiveImage(1)}
                       aria-label="Show first image"
                     />
                     <button
                       className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                        activeImage === 2 
-                          ? 'bg-white' 
-                          : 'bg-white/50 hover:bg-white/75'
+                        activeImage === 2
+                          ? "bg-white"
+                          : "bg-white/50 hover:bg-white/75"
                       }`}
                       onClick={() => setActiveImage(2)}
                       aria-label="Show second image"
@@ -140,4 +160,4 @@ const About = () => {
   );
 };
 
-export default About; 
+export default About;
