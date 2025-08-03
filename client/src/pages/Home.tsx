@@ -89,7 +89,7 @@ const Home = () => {
             {/* Featured Image 1 */}
             <div className="group relative overflow-hidden">
               <img
-                src={sections.featured1?.currentPhotoUrl || "/images/featured-1.jpg"}
+                src={(sections.featured1?.currentPhotoUrl?.startsWith('http') ? sections.featured1.currentPhotoUrl : `http://147.93.181.97:3001${sections.featured1?.currentPhotoUrl}`) || "/images/featured-1.jpg"}
                 alt="Featured Work 1"
                 className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -104,7 +104,7 @@ const Home = () => {
             {/* Featured Image 2 */}
             <div className="group relative overflow-hidden">
               <img
-                src={sections.featured2?.currentPhotoUrl || "/images/featured-2.jpg"}
+                src={(sections.featured2?.currentPhotoUrl?.startsWith('http') ? sections.featured2.currentPhotoUrl : `http://147.93.181.97:3001${sections.featured2?.currentPhotoUrl}`) || "/images/featured-2.jpg"}
                 alt="Featured Work 2"
                 className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -119,7 +119,7 @@ const Home = () => {
             {/* Featured Image 3 */}
             <div className="group relative overflow-hidden">
               <img
-                src={sections.featured3?.currentPhotoUrl || "/images/featured-3.jpg"}
+                src={(sections.featured3?.currentPhotoUrl?.startsWith('http') ? sections.featured3.currentPhotoUrl : `http://147.93.181.97:3001${sections.featured3?.currentPhotoUrl}`) || "/images/featured-3.jpg"}
                 alt="Featured Work 3"
                 className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -147,21 +147,21 @@ const Home = () => {
             <div className="flex transition-transform duration-500 ease-in-out" style={{transform: `translateX(-${currentSlide * 100}%)`}}>
               <div className="w-full flex-shrink-0">
                 <img
-                  src={sections['collection-nature']?.currentPhotoUrl || "/images/collection-nature.jpg"}
+                  src={(sections['collection-nature']?.currentPhotoUrl?.startsWith('http') ? sections['collection-nature'].currentPhotoUrl : `http://147.93.181.97:3001${sections['collection-nature']?.currentPhotoUrl}`) || "/images/collection-nature.jpg"}
                   alt="Collection Image 1"
                   className="w-full h-[700px] object-cover"
                 />
               </div>
               <div className="w-full flex-shrink-0">
                 <img
-                  src={sections['collection-portrait']?.currentPhotoUrl || "/images/collection-portrait.jpg"}
+                  src={(sections['collection-portrait']?.currentPhotoUrl?.startsWith('http') ? sections['collection-portrait'].currentPhotoUrl : `http://147.93.181.97:3001${sections['collection-portrait']?.currentPhotoUrl}`) || "/images/collection-portrait.jpg"}
                   alt="Collection Image 2"
                   className="w-full h-[700px] object-cover"
                 />
               </div>
               <div className="w-full flex-shrink-0">
                 <img
-                  src={sections.featured1?.currentPhotoUrl || "/images/featured-1.jpg"}
+                  src={(sections.featured1?.currentPhotoUrl?.startsWith('http') ? sections.featured1.currentPhotoUrl : `http://147.93.181.97:3001${sections.featured1?.currentPhotoUrl}`) || "/images/featured-1.jpg"}
                   alt="Collection Image 3"
                   className="w-full h-[700px] object-cover"
                 />
