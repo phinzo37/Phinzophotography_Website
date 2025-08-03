@@ -107,7 +107,9 @@ const Admin = () => {
         ) as HTMLInputElement;
         if (fileInput) fileInput.value = "";
       } else {
-        setUploadError("Upload failed");
+        const errorText = await response.text();
+        console.error('Upload error:', errorText);
+        setUploadError(`Upload failed: ${response.status} - ${errorText}`);
       }
     } catch (error) {
       setUploadError("Error uploading photo");
@@ -343,7 +345,7 @@ const Admin = () => {
               >
                 <div className="aspect-w-16 aspect-h-9">
                   <img
-                    src={photo.url}
+                    src={photo.url.startsWith('http') ? photo.url : `http://147.93.181.97:3001${photo.url}`}
                     alt={photo.title}
                     className="w-full h-full object-cover"
                   />

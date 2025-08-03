@@ -142,7 +142,7 @@ const Portfolio = () => {
             >
               <div className="overflow-hidden">
                 <img
-                  src={photo.url}
+                  src={photo.url.startsWith('http') ? photo.url : `http://147.93.181.97:3001${photo.url}`}
                   alt={photo.title}
                   className="w-full h-[400px] object-cover transition-transform duration-500 group-hover:scale-105"
                 />
