@@ -17,7 +17,7 @@ app.post('/api/contact', async (req, res) => {
     service: 'gmail',
     auth: {
       user: 'phinzophotography@gmail.com',
-      pass: 'your-gmail-app-password' // Replace with your actual Gmail app password
+      pass: 'PUT_YOUR_GMAIL_APP_PASSWORD_HERE' // Replace with your actual Gmail app password
     }
   });
   
