@@ -11,7 +11,9 @@ interface Photo {
   album?: string;
 }
 
-const API_BASE = "http://147.93.181.97:3001/api";
+import { API_BASE_URL, SERVER_BASE_URL } from '../config/api';
+
+const API_BASE = API_BASE_URL;
 
 const Admin = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
@@ -112,6 +114,7 @@ const Admin = () => {
         setUploadError(`Upload failed: ${response.status} - ${errorText}`);
       }
     } catch (error) {
+      console.error('Upload error:', error);
       setUploadError("Error uploading photo");
     } finally {
       setUploading(false);
@@ -169,6 +172,7 @@ const Admin = () => {
       setFormData({ title: "", description: "", album: "" });
       setUploadSuccess("Photo updated successfully!");
     } catch (error) {
+      console.error('Update error:', error);
       setUploadError("Error updating photo");
     }
   };
@@ -345,7 +349,7 @@ const Admin = () => {
               >
                 <div className="aspect-w-16 aspect-h-9">
                   <img
-                    src={photo.url.startsWith('http') ? photo.url : `http://147.93.181.97:3001${photo.url}`}
+                    src={photo.url.startsWith('http') ? photo.url : `${SERVER_BASE_URL}${photo.url}`}
                     alt={photo.title}
                     className="w-full h-full object-cover"
                   />

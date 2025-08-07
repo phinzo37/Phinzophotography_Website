@@ -26,7 +26,7 @@ const Navbar = () => {
             <img
               src="/images/logo.png"
               alt="Phinzo Photography Logo"
-              className="h-96 w-auto"
+              className="h-56 w-auto"
             />
           </Link>
 
