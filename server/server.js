@@ -77,7 +77,7 @@ app.post('/api/photos', authenticateToken, upload.single('photo'), (req, res) =>
     title: req.body.title || 'Untitled',
     description: req.body.description || '',
     album: req.body.album || '',
-    url: `/uploads/${req.file.filename}`,
+url: `https://phinzophotography.com/uploads/${req.file.filename}`,
     filename: req.file.filename,
     uploadDate: new Date()
   };

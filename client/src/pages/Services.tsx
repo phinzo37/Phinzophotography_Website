@@ -24,7 +24,7 @@ const Services = () => {
       exit={{ opacity: 0 }}
       className="min-h-screen bg-gray-50 dark:bg-black pt-48"
     >
-      <div className="container mx-auto px-8 ml-24">
+<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ y: 20, opacity: 0 }}
@@ -49,7 +49,7 @@ const Services = () => {
               <div className="space-y-6 group">
                 <div className="overflow-hidden">
                   <img
-                    src={(sections.couples?.currentPhotoUrl?.startsWith('http') ? sections.couples.currentPhotoUrl : `http://147.93.181.97:3001${sections.couples?.currentPhotoUrl}`) || "/images/service-couples.jpg"}
+                    src={(sections.couples?.currentPhotoUrl?.startsWith('http') ? sections.couples.currentPhotoUrl : `https://phinzophotography.com${sections.couples?.currentPhotoUrl}`) || "/images/service-couples.jpg"}
                     alt="Couples & Engagements"
                     className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
                   />
@@ -65,7 +65,7 @@ const Services = () => {
               <div className="space-y-6 group">
                 <div className="overflow-hidden">
                   <img
-                    src={(sections.weddings?.currentPhotoUrl?.startsWith('http') ? sections.weddings.currentPhotoUrl : `http://147.93.181.97:3001${sections.weddings?.currentPhotoUrl}`) || "/images/service-weddings.jpg"}
+                    src={(sections.weddings?.currentPhotoUrl?.startsWith('http') ? sections.weddings.currentPhotoUrl : `https://phinzophotography.com${sections.weddings?.currentPhotoUrl}`) || "/images/service-weddings.jpg"}
                     alt="Weddings & Elopements"
                     className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
                   />
@@ -81,7 +81,7 @@ const Services = () => {
               <div className="space-y-6 group">
                 <div className="overflow-hidden">
                   <img
-                    src={(sections.maternity?.currentPhotoUrl?.startsWith('http') ? sections.maternity.currentPhotoUrl : `http://147.93.181.97:3001${sections.maternity?.currentPhotoUrl}`) || "/images/service-maternity.jpg"}
+                    src={(sections.maternity?.currentPhotoUrl?.startsWith('http') ? sections.maternity.currentPhotoUrl : `https://phinzophotography.com${sections.maternity?.currentPhotoUrl}`) || "/images/service-maternity.jpg"}
                     alt="Maternity & Baby Showers"
                     className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
                   />
@@ -97,7 +97,7 @@ const Services = () => {
               <div className="space-y-6 group">
                 <div className="overflow-hidden">
                   <img
-                    src={(sections.events?.currentPhotoUrl?.startsWith('http') ? sections.events.currentPhotoUrl : `http://147.93.181.97:3001${sections.events?.currentPhotoUrl}`) || "/images/service-events.jpg"}
+                    src={(sections.events?.currentPhotoUrl?.startsWith('http') ? sections.events.currentPhotoUrl : `https://phinzophotography.com${sections.events?.currentPhotoUrl}`) || "/images/service-events.jpg"}
                     alt="Birthday Parties & Special Events"
                     className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
                   />
@@ -113,7 +113,7 @@ const Services = () => {
               <div className="space-y-6 group">
                 <div className="overflow-hidden">
                   <img
-                    src={(sections.graduations?.currentPhotoUrl?.startsWith('http') ? sections.graduations.currentPhotoUrl : `http://147.93.181.97:3001${sections.graduations?.currentPhotoUrl}`) || "/images/service-graduations.jpg"}
+                    src={(sections.graduations?.currentPhotoUrl?.startsWith('http') ? sections.graduations.currentPhotoUrl : `https://phinzophotography.com${sections.graduations?.currentPhotoUrl}`) || "/images/service-graduations.jpg"}
                     alt="Graduations"
                     className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
                   />
@@ -129,7 +129,7 @@ const Services = () => {
               <div className="space-y-6 group">
                 <div className="overflow-hidden">
                   <img
-                    src={(sections.family?.currentPhotoUrl?.startsWith('http') ? sections.family.currentPhotoUrl : `http://147.93.181.97:3001${sections.family?.currentPhotoUrl}`) || "/images/service-family.jpg"}
+                    src={(sections.family?.currentPhotoUrl?.startsWith('http') ? sections.family.currentPhotoUrl : `https://phinzophotography.com${sections.family?.currentPhotoUrl}`) || "/images/service-family.jpg"}
                     alt="Family & Group Portraits"
                     className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
                   />

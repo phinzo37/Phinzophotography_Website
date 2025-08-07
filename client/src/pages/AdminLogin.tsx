@@ -66,9 +66,6 @@ const AdminLogin = () => {
           >
             <h1 className="text-3xl font-light mb-8 text-center">Admin Login</h1>
             
-            <div className="bg-blue-50 text-blue-600 p-3 rounded-md mb-6 text-sm">
-              <strong>Login:</strong> Username: admin, Password: password
-            </div>
             
             {error && (
               <div className="bg-red-50 text-red-500 p-3 rounded-md mb-6">

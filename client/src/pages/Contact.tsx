@@ -26,8 +26,7 @@ const Contact = () => {
     setSuccess(false);
 
     try {
-      const response = await fetch('http://147.93.181.97:3001/api/contact', {
-        method: 'POST',
+const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'https://phinzophotography.com/api'}/contact`, {        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -56,7 +55,7 @@ const Contact = () => {
       exit={{ opacity: 0 }}
       className="min-h-screen bg-gray-50 dark:bg-black pt-40"
     >
-      <div className="container mx-auto px-8 ml-40">
+<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <motion.div

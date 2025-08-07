@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { loadSiteSections } from '../services/siteService';
 import { SiteSection } from '../models/SiteSection';
-import { SERVER_BASE_URL } from '../config/api';
+
 
 const Home = () => {
   const [sections, setSections] = useState<Record<string, SiteSection>>({});
@@ -35,7 +35,7 @@ const Home = () => {
       className="min-h-screen bg-gray-50 dark:bg-black pt-32"
     >
       {/* Hero Section */}
-      <div className="container mx-auto px-8 ml-24">
+<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="min-h-[80vh] flex flex-col items-center justify-center text-center">
           <motion.div
             initial={{ y: 20, opacity: 0 }}
@@ -90,7 +90,7 @@ const Home = () => {
             {/* Featured Image 1 */}
             <div className="group relative overflow-hidden">
               <img
-                src={(sections.featured1?.currentPhotoUrl?.startsWith('http') ? sections.featured1.currentPhotoUrl : `${SERVER_BASE_URL}${sections.featured1?.currentPhotoUrl}`) || "/images/featured-1.jpg"}
+                src={(sections.featured1?.currentPhotoUrl?.startsWith('http') ? sections.featured1.currentPhotoUrl : `https://phinzophotography.com${sections.featured1?.currentPhotoUrl}`) || "/images/featured-1.jpg"}
                 alt="Featured Work 1"
                 className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -105,7 +105,7 @@ const Home = () => {
             {/* Featured Image 2 */}
             <div className="group relative overflow-hidden">
               <img
-                src={(sections.featured2?.currentPhotoUrl?.startsWith('http') ? sections.featured2.currentPhotoUrl : `${SERVER_BASE_URL}${sections.featured2?.currentPhotoUrl}`) || "/images/featured-2.jpg"}
+                src={(sections.featured2?.currentPhotoUrl?.startsWith('http') ? sections.featured2.currentPhotoUrl : `https://phinzophotography.com${sections.featured2?.currentPhotoUrl}`) || "/images/featured-2.jpg"}
                 alt="Featured Work 2"
                 className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -120,7 +120,7 @@ const Home = () => {
             {/* Featured Image 3 */}
             <div className="group relative overflow-hidden">
               <img
-                src={(sections.featured3?.currentPhotoUrl?.startsWith('http') ? sections.featured3.currentPhotoUrl : `${SERVER_BASE_URL}${sections.featured3?.currentPhotoUrl}`) || "/images/featured-3.jpg"}
+                src={(sections.featured3?.currentPhotoUrl?.startsWith('http') ? sections.featured3.currentPhotoUrl : `https://phinzophotography.com${sections.featured3?.currentPhotoUrl}`) || "/images/featured-3.jpg"}
                 alt="Featured Work 3"
                 className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -148,21 +148,21 @@ const Home = () => {
             <div className="flex transition-transform duration-500 ease-in-out" style={{transform: `translateX(-${currentSlide * 100}%)`}}>
               <div className="w-full flex-shrink-0">
                 <img
-                  src={(sections['collection-nature']?.currentPhotoUrl?.startsWith('http') ? sections['collection-nature'].currentPhotoUrl : `${SERVER_BASE_URL}${sections['collection-nature']?.currentPhotoUrl}`) || "/images/collection-nature.jpg"}
+                  src={(sections['collection-nature']?.currentPhotoUrl?.startsWith('http') ? sections['collection-nature'].currentPhotoUrl : `https://phinzophotography.com${sections['collection-nature']?.currentPhotoUrl}`) || "/images/collection-nature.jpg"}
                   alt="Collection Image 1"
                   className="w-full h-[700px] object-cover"
                 />
               </div>
               <div className="w-full flex-shrink-0">
                 <img
-                  src={(sections['collection-portrait']?.currentPhotoUrl?.startsWith('http') ? sections['collection-portrait'].currentPhotoUrl : `${SERVER_BASE_URL}${sections['collection-portrait']?.currentPhotoUrl}`) || "/images/collection-portrait.jpg"}
+                  src={(sections['collection-portrait']?.currentPhotoUrl?.startsWith('http') ? sections['collection-portrait'].currentPhotoUrl : `https://phinzophotography.com${sections['collection-portrait']?.currentPhotoUrl}`) || "/images/collection-portrait.jpg"}
                   alt="Collection Image 2"
                   className="w-full h-[700px] object-cover"
                 />
               </div>
               <div className="w-full flex-shrink-0">
                 <img
-                  src={(sections.featured1?.currentPhotoUrl?.startsWith('http') ? sections.featured1.currentPhotoUrl : `${SERVER_BASE_URL}${sections.featured1?.currentPhotoUrl}`) || "/images/featured-1.jpg"}
+                  src={(sections.featured1?.currentPhotoUrl?.startsWith('http') ? sections.featured1.currentPhotoUrl : `https://phinzophotography.com${sections.featured1?.currentPhotoUrl}`) || "/images/featured-1.jpg"}
                   alt="Collection Image 3"
                   className="w-full h-[700px] object-cover"
                 />

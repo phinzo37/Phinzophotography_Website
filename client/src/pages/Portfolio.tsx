@@ -9,7 +9,7 @@ interface Photo {
   album?: string;
 }
 
-const API_BASE = "http://147.93.181.97:3001/api";
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "https://phinzophotography.com/api";
 
 const Portfolio = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
@@ -73,7 +73,7 @@ const Portfolio = () => {
       exit={{ opacity: 0 }}
       className="min-h-screen bg-gray-50 dark:bg-black pt-48"
     >
-      <div className="container mx-auto px-8 ml-72">
+<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
