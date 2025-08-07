@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from "express";
 import cors from "cors";
 import nodemailer from "nodemailer";
@@ -110,7 +111,7 @@ app.delete('/api/photos/:id', authenticateToken, (req, res) => {
 app.post("/api/contact", async (req, res) => {
   const { name, email, subject, message } = req.body;
 
-  const transporter = nodemailer.createTransporter({
+  const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
       user: process.env.EMAIL_USER || "phinzophotography@gmail.com",
