@@ -34,8 +34,8 @@ const Home = () => {
       exit={{ opacity: 0 }}
       className="min-h-screen bg-gray-50 dark:bg-black pt-32"
     >
-      {/* Hero Section */}
-<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+ {/* Hero Section */}
+      <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
         <div className="min-h-[80vh] flex flex-col items-center justify-center text-center">
           <motion.div
             initial={{ y: 20, opacity: 0 }}
