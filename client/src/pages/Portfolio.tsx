@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 interface Photo {
   _id: string;
@@ -9,50 +9,7 @@ interface Photo {
   album?: string;
 }
 
-// Mock data for development without backend
-const mockPhotos: Photo[] = [
-  {
-    _id: '1',
-    title: 'Mountain Landscape',
-    description: 'Beautiful mountain scenery',
-    url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
-    album: 'Landscapes'
-  },
-  {
-    _id: '2',
-    title: 'Portrait Session',
-    description: 'Professional portrait photography',
-    url: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&h=600&fit=crop',
-    album: 'Portraits'
-  },
-  {
-    _id: '3',
-    title: 'Street Photography',
-    description: 'Urban life captured',
-    url: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=600&fit=crop',
-    album: 'Street'
-  },
-  {
-    _id: '4',
-    title: 'Nature Close-up',
-    description: 'Macro photography of flowers',
-    url: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800&h=600&fit=crop',
-    album: 'Nature'
-  },
-  {
-    _id: '5',
-    title: 'Architecture',
-    description: 'Modern building design',
-    url: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&h=600&fit=crop',
-    album: 'Architecture'
-  },
-  {
-    _id: '6',
-    title: 'Abstract Art',
-    description: 'Creative abstract composition',
-    url: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=800&h=600&fit=crop'
-  }
-];
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "https://phinzophotography.com/api";
 
 const Portfolio = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
@@ -61,16 +18,15 @@ const Portfolio = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Simulate API call with mock data
     const fetchPhotos = async () => {
       try {
-        // Simulate loading delay
-        await new Promise(resolve => setTimeout(resolve, 500));
-        setPhotos(mockPhotos);
+        const response = await fetch(`${API_BASE}/photos`);
+        const data = await response.json();
+        setPhotos(data);
         setLoading(false);
       } catch (error) {
-        console.error('Error loading photos:', error);
-        setError('Failed to load photos');
+        console.error("Error loading photos:", error);
+        setError("Failed to load photos");
         setLoading(false);
       }
     };
@@ -79,14 +35,22 @@ const Portfolio = () => {
   }, []);
 
   // Get unique albums, including photos without albums
-  const albums = Array.from(new Set(photos.map(photo => photo.album || 'Uncategorized').filter(Boolean)));
+  const albums = Array.from(
+    new Set(
+      photos.map((photo) => photo.album || "Uncategorized").filter(Boolean)
+    )
+  );
 
   // Filter photos based on selected album, show all if no album is selected
   const filteredPhotos = selectedAlbum
-    ? selectedAlbum === 'Uncategorized'
-      ? photos.filter(photo => !photo.album)
-      : photos.filter(photo => photo.album?.toLowerCase() === selectedAlbum.toLowerCase())
+    ? selectedAlbum === "Uncategorized"
+      ? photos.filter((photo) => !photo.album)
+      : photos.filter(
+          (photo) => photo.album?.toLowerCase() === selectedAlbum.toLowerCase()
+        )
     : photos;
+
+
 
   if (loading) {
     return (
@@ -109,20 +73,21 @@ const Portfolio = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen pt-24"
+      className="min-h-screen bg-gray-50 dark:bg-black pt-48"
     >
-      <div className="container mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="text-center mb-16"
+          className="text-center mb-16 md:mb-20 lg:mb-24 w-full"
         >
-          <h1 className="text-5xl font-light tracking-tight text-gray-900 mb-4">
-            Portfolio
+          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white mb-4 md:mb-6">
+            PORTFOLIO
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Explore my collection of photographs capturing moments, emotions, and the beauty of the world around us.
+          <p className="text-base md:text-lg font-light text-gray-500 dark:text-gray-400 max-w-2xl md:max-w-3xl mx-auto px-4">
+            Explore my collection of photographs capturing moments, emotions,
+            and the beauty of the world around us.
           </p>
         </motion.div>
 
@@ -132,15 +97,15 @@ const Portfolio = () => {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="mb-12"
+            className="mb-12 md:mb-16 text-center"
           >
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-4 md:gap-6">
               <button
                 onClick={() => setSelectedAlbum(null)}
-                className={`px-6 py-2 rounded-full border transition-colors ${
+                className={`px-6 py-2 text-sm tracking-[0.1em] uppercase transition-colors ${
                   selectedAlbum === null
-                    ? 'bg-gray-900 text-white border-gray-900'
-                    : 'bg-white text-gray-700 border-gray-300 hover:border-gray-900'
+                    ? "text-gray-900 dark:text-white border-b border-gray-900 dark:border-white"
+                    : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                 }`}
               >
                 All Photos
@@ -149,10 +114,10 @@ const Portfolio = () => {
                 <button
                   key={album}
                   onClick={() => setSelectedAlbum(album)}
-                  className={`px-6 py-2 rounded-full border transition-colors ${
+                  className={`px-6 py-2 text-sm tracking-[0.1em] uppercase transition-colors ${
                     selectedAlbum === album
-                      ? 'bg-gray-900 text-white border-gray-900'
-                      : 'bg-white text-gray-700 border-gray-300 hover:border-gray-900'
+                      ? "text-gray-900 dark:text-white border-b border-gray-900 dark:border-white"
+                      : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                   }`}
                 >
                   {album}
@@ -167,7 +132,7 @@ const Portfolio = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 lg:gap-12"
         >
           {filteredPhotos.map((photo, index) => (
             <motion.div
@@ -175,22 +140,24 @@ const Portfolio = () => {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.1 * index }}
-              className="group cursor-pointer"
+              className="space-y-6 group cursor-pointer"
             >
-              <div className="relative overflow-hidden rounded-lg shadow-lg">
+              <div className="overflow-hidden">
                 <img
-                  src={photo.url}
+                  src={photo.url.startsWith('http') ? photo.url : `http://147.93.181.97:3001${photo.url}`}
                   alt={photo.title}
-                  className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                  <div className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center p-4">
-                    <h3 className="text-xl font-medium mb-2">{photo.title}</h3>
-                    {photo.description && (
-                      <p className="text-sm">{photo.description}</p>
-                    )}
-                  </div>
-                </div>
+              </div>
+              <div className="text-center">
+                <h3 className="text-lg font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase mb-2">
+                  {photo.title}
+                </h3>
+                {photo.description && (
+                  <p className="text-gray-500 dark:text-gray-400 font-light leading-relaxed">
+                    {photo.description}
+                  </p>
+                )}
               </div>
             </motion.div>
           ))}
@@ -202,7 +169,9 @@ const Portfolio = () => {
             animate={{ y: 0, opacity: 1 }}
             className="text-center py-16"
           >
-            <p className="text-gray-600 text-lg">No photos found in this category.</p>
+            <p className="text-gray-500 dark:text-gray-400 font-light text-lg">
+              No photos found in this category.
+            </p>
           </motion.div>
         )}
       </div>
@@ -210,4 +179,4 @@ const Portfolio = () => {
   );
 };
 
-export default Portfolio; 
+export default Portfolio;

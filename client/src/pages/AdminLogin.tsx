@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../config/api';
 
 const AdminLogin = () => {
   const [credentials, setCredentials] = useState({
@@ -25,15 +26,23 @@ const AdminLogin = () => {
     setLoading(true);
 
     try {
-      // Mock login - always succeeds for development
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API delay
-      
-      // Store a mock token
-      localStorage.setItem('adminToken', 'mock-token-for-development');
-      
-      // Redirect to admin panel
-      navigate('/admin');
+      const response = await fetch(`${API_BASE_URL}/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(credentials),
+      });
+
+      if (response.ok) {
+        const { token } = await response.json();
+        localStorage.setItem('adminToken', token);
+        navigate('/admin');
+      } else {
+        setError('Invalid username or password');
+      }
     } catch (error) {
+      console.error('Login error:', error);
       setError('Login failed. Please try again.');
     } finally {
       setLoading(false);
@@ -57,9 +66,6 @@ const AdminLogin = () => {
           >
             <h1 className="text-3xl font-light mb-8 text-center">Admin Login</h1>
             
-            <div className="bg-blue-50 text-blue-600 p-3 rounded-md mb-6 text-sm">
-              <strong>Development Mode:</strong> Any username/password will work for testing.
-            </div>
             
             {error && (
               <div className="bg-red-50 text-red-500 p-3 rounded-md mb-6">
