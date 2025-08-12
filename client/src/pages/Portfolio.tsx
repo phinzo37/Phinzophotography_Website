@@ -50,6 +50,8 @@ const Portfolio = () => {
         )
     : photos;
 
+
+
   if (loading) {
     return (
       <div className="min-h-screen pt-24 flex items-center justify-center">
@@ -73,17 +75,17 @@ const Portfolio = () => {
       exit={{ opacity: 0 }}
       className="min-h-screen bg-gray-50 dark:bg-black pt-48"
     >
-<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="text-center mb-24"
+          className="text-center mb-16 md:mb-20 lg:mb-24 w-full"
         >
-          <h1 className="text-[2.5rem] md:text-[4rem] font-extralight tracking-[0.2em] text-gray-900 dark:text-white mb-6">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white mb-4 md:mb-6">
             PORTFOLIO
           </h1>
-          <p className="text-lg font-light text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg font-light text-gray-500 dark:text-gray-400 max-w-2xl md:max-w-3xl mx-auto px-4">
             Explore my collection of photographs capturing moments, emotions,
             and the beauty of the world around us.
           </p>
@@ -95,9 +97,9 @@ const Portfolio = () => {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="mb-16"
+            className="mb-12 md:mb-16 text-center"
           >
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-4 md:gap-6">
               <button
                 onClick={() => setSelectedAlbum(null)}
                 className={`px-6 py-2 text-sm tracking-[0.1em] uppercase transition-colors ${
@@ -130,7 +132,7 @@ const Portfolio = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 lg:gap-12"
         >
           {filteredPhotos.map((photo, index) => (
             <motion.div
@@ -144,7 +146,7 @@ const Portfolio = () => {
                 <img
                   src={photo.url.startsWith('http') ? photo.url : `http://147.93.181.97:3001${photo.url}`}
                   alt={photo.title}
-                  className="w-full h-[400px] object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
               <div className="text-center">

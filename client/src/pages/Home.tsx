@@ -32,9 +32,9 @@ const Home = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen bg-gray-50 dark:bg-black pt-32"
+      className="min-h-screen bg-gray-50 dark:bg-black pt-16"
     >
- {/* Hero Section */}
+      {/* Hero Section */}
       <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
         <div className="min-h-[80vh] flex flex-col items-center justify-center text-center">
           <motion.div
@@ -54,7 +54,7 @@ const Home = () => {
                 <span className="absolute h-[1px] w-full bg-gradient-to-r from-transparent via-gray-400 dark:via-gray-600 to-transparent bottom-0 left-0"></span>
               </p>
             </motion.div>
-            <h1 className="text-[2.5rem] md:text-[4rem] lg:text-[5rem] font-extralight tracking-[0.2em] text-gray-900 dark:text-white mb-6 leading-tight">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white mb-4 md:mb-6 leading-tight">
               <motion.span
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -83,16 +83,16 @@ const Home = () => {
           transition={{ delay: 0.4 }}
           className="pt-8 pb-32"
         >
-          <h2 className="text-4xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white mb-24 text-center uppercase">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white mb-12 md:mb-16 lg:mb-24 text-center uppercase">
             Recent Work
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16">
             {/* Featured Image 1 */}
             <div className="group relative overflow-hidden">
               <img
                 src={(sections.featured1?.currentPhotoUrl?.startsWith('http') ? sections.featured1.currentPhotoUrl : `https://phinzophotography.com${sections.featured1?.currentPhotoUrl}`) || "/images/featured-1.jpg"}
                 alt="Featured Work 1"
-                className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <div className="text-white text-center p-4">
@@ -107,7 +107,7 @@ const Home = () => {
               <img
                 src={(sections.featured2?.currentPhotoUrl?.startsWith('http') ? sections.featured2.currentPhotoUrl : `https://phinzophotography.com${sections.featured2?.currentPhotoUrl}`) || "/images/featured-2.jpg"}
                 alt="Featured Work 2"
-                className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <div className="text-white text-center p-4">
@@ -122,7 +122,7 @@ const Home = () => {
               <img
                 src={(sections.featured3?.currentPhotoUrl?.startsWith('http') ? sections.featured3.currentPhotoUrl : `https://phinzophotography.com${sections.featured3?.currentPhotoUrl}`) || "/images/featured-3.jpg"}
                 alt="Featured Work 3"
-                className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <div className="text-white text-center p-4">

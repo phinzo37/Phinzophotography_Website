@@ -55,24 +55,24 @@ const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'https://ph
       exit={{ opacity: 0 }}
       className="min-h-screen bg-gray-50 dark:bg-black pt-40"
     >
-<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+        <div className="max-w-5xl mx-auto w-full">
           {/* Header */}
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-center mb-24"
+            className="text-center mb-16 md:mb-20 lg:mb-24 w-full"
           >
-            <h1 className="text-[2.5rem] md:text-[4rem] font-extralight tracking-[0.2em] text-gray-900 dark:text-white mb-6">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white mb-4 md:mb-6">
               GET IN TOUCH
             </h1>
-            <p className="text-lg font-light text-gray-500 dark:text-gray-400 max-w-2xl mx-auto whitespace-nowrap">
+            <p className="text-base md:text-lg font-light text-gray-500 dark:text-gray-400 max-w-2xl md:max-w-3xl mx-auto px-4">
               Let's create something beautiful together. Feel free to reach out through any of the following channels.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-20 xl:gap-24">
             {/* Contact Information */}
             <motion.div
               initial={{ y: 20, opacity: 0 }}
@@ -87,12 +87,12 @@ const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'https://ph
                 <div className="space-y-6">
                   <a
                     href="mailto:phinzophotography@gmail.com"
-                    className="flex items-center justify-center space-x-4 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors group"
+                    className="flex items-center justify-center space-x-4 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors group text-center"
                   >
                     <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    <span className="text-sm tracking-[0.1em]">phinzophotography@gmail.com</span>
+                    <span className="text-xs sm:text-sm tracking-[0.1em] break-all">phinzophotography@gmail.com</span>
                   </a>
                   <a
                     href="tel:+14435277259"

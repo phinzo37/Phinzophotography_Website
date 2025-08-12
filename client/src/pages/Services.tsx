@@ -24,15 +24,15 @@ const Services = () => {
       exit={{ opacity: 0 }}
       className="min-h-screen bg-gray-50 dark:bg-black pt-48"
     >
-<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
         {/* Header */}
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="text-center mb-24"
+          className="text-center mb-16 md:mb-20 lg:mb-24 w-full"
         >
-          <h1 className="text-[2.5rem] md:text-[4rem] font-extralight tracking-[0.2em] text-gray-900 dark:text-white mb-6">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white mb-4 md:mb-6">
             SERVICES
           </h1>
         </motion.div>
@@ -42,16 +42,16 @@ const Services = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="space-y-16"
+          className="space-y-12 md:space-y-16"
         >
           <div className="space-y-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-48">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16">
               <div className="space-y-6 group">
                 <div className="overflow-hidden">
                   <img
                     src={(sections.couples?.currentPhotoUrl?.startsWith('http') ? sections.couples.currentPhotoUrl : `https://phinzophotography.com${sections.couples?.currentPhotoUrl}`) || "/images/service-couples.jpg"}
                     alt="Couples & Engagements"
-                    className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <h3 className="text-xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase text-center">
@@ -142,7 +142,7 @@ const Services = () => {
                 </p>
               </div>
 
-              <div className="space-y-6 md:col-span-2">
+              <div className="space-y-6 sm:col-span-2 lg:col-span-3">
                 <h3 className="text-xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase text-center">
                   Lifestyle Photography
                 </h3>
@@ -154,12 +154,12 @@ const Services = () => {
           </div>
 
           {/* Additional Services */}
-          <div className="space-y-16">
-            <h2 className="text-2xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase text-center">
+          <div className="space-y-12 md:space-y-16">
+            <h2 className="text-xl md:text-2xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white uppercase text-center">
               Additional Services
             </h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 lg:gap-24">
               <div className="space-y-8">
                 <ul className="space-y-6">
                   <li className="flex items-start space-x-4">

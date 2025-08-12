@@ -20,17 +20,17 @@ const Navbar = () => {
       animate={{ y: 0 }}
       className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-md"
     >
-      <div className="container mx-auto px-8">
-        <div className="flex items-center justify-between h-32">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20 md:h-24 lg:h-32">
           <Link to="/" className="flex items-center">
             <img
               src="/images/logo.png"
               alt="Phinzo Photography Logo"
-              className="h-56 w-auto"
+              className="h-12 w-auto md:h-16 lg:h-20 xl:h-24 2xl:h-28"
             />
           </Link>
 
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             <Link
               to="/"
               className={`text-sm tracking-[0.2em] uppercase ${
@@ -86,7 +86,7 @@ const Navbar = () => {
           <div className="flex items-center space-x-4">
             <button
               onClick={toggleMobileMenu}
-              className="md:hidden p-2 text-gray-600 dark:text-gray-400"
+              className="lg:hidden p-2 text-gray-600 dark:text-gray-400"
               aria-label="Toggle menu"
             >
               <svg
@@ -115,7 +115,7 @@ const Navbar = () => {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="md:hidden py-4 border-t border-gray-100 dark:border-gray-800"
+            className="lg:hidden py-6 border-t border-gray-100 dark:border-gray-800"
           >
             <div className="flex flex-col space-y-4">
               <Link

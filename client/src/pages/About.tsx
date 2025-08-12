@@ -15,8 +15,8 @@ const About = () => {
       exit={{ opacity: 0 }}
       className="min-h-screen bg-gray-50 dark:bg-black pt-48"
     >
-<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+        <div className="w-full">
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -24,8 +24,8 @@ const About = () => {
             className="space-y-24"
           >
             {/* Header */}
-            <div className="text-center">
-              <h1 className="text-[2.5rem] md:text-[4rem] font-extralight tracking-[0.2em] text-gray-900 dark:text-white mb-6">
+            <div className="text-center w-full mb-16 md:mb-20 lg:mb-24">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extralight tracking-[0.2em] text-gray-900 dark:text-white mb-4 md:mb-6">
                 CAPTURING MOMENTS,
                 <br />
                 <span className="text-gray-500 dark:text-gray-500">
@@ -35,7 +35,7 @@ const About = () => {
             </div>
 
             {/* Content and Image Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-start">
               {/* Text Content */}
               <motion.div
                 initial={{ x: -20, opacity: 0 }}
@@ -90,7 +90,7 @@ const About = () => {
 
               {/* Images Column */}
               <div
-                className="relative aspect-[3/4] cursor-pointer w-96 mx-auto"
+                className="relative aspect-[3/4] cursor-pointer w-full max-w-sm md:max-w-md lg:max-w-lg mx-auto"
                 onClick={toggleImage}
               >
                 <div className="relative w-full h-full">
